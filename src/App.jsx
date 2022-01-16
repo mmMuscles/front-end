@@ -8,10 +8,10 @@ function App() {
   return (
     <>
     <Switch>
-      <Route>
-        <Home path='/'/>
+      <Route exact path='/'>
+        <Home />
       </Route>
-      <Route>
+      <Route path='/auth'>
         <Auth/>
       </Route>
     </Switch>
