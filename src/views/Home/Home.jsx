@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import Account from '../../components/Account'
-import { supabase } from '../../services/supabaseClient'
+import Account from '../../Components/Account'
+import { supabase } from '../../Services/supabaseClient'
 import Auth from '../Auth/Auth'
 
 export default function Home() {
