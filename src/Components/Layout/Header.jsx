@@ -22,7 +22,7 @@ export default function Header() {
          {email
           ? <main>
               <h1>Hello {email}</h1>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' 
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
                 onClick={handleLogOut} >Log out</button>
           </main>
           : <main>
@@ -33,3 +33,5 @@ export default function Header() {
         </>
     )
 }
+
+//comment 
