@@ -18,7 +18,7 @@ export async function signUpUser(email, password) {
     if (error) throw error;
     return user;
   }
-  export function getUser() {
+  export async function getUser() {
     return supabase.auth.user();
   }
   
