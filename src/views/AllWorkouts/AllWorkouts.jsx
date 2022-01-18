@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { getWorkouts } from '../../Services/wgerClient'
-import Workout from '../../Components/Workout'
+import { getWorkouts } from '../../services/wgerClient'
+import Workout from '../../components/Workout'
 
 export default function AllWorkouts() {
 
