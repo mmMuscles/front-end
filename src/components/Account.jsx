@@ -19,12 +19,21 @@ export default function Account({ session }) {
       let { data, error, status } = await supabase
         .from('profiles')
         .select(`username, website, avatar_url`)
-        .eq('id', user.id)
+        .eq('email', user.email)
         .single()
 
-      if (error && status !== 406) {
+      if (error && status === 406) {
+
+        let newProfile = await supabase.from('profiles').insert({
+          email: user.email,
+          user_id: user.id
+        })
+        data = newProfile.data
+        
+      } else if (error && status !== 406){
         throw error
       }
+
 
       if (data) {
         setUsername(data.username)
@@ -44,15 +53,17 @@ export default function Account({ session }) {
       const user = supabase.auth.user()
 
       const updates = {
-        id: user.id,
         username,
         website,
         avatar_url,
         updated_at: new Date(),
       }
 
-      let { error } = await supabase.from('profiles').upsert(updates, {
+      let { error } = await supabase.from('profiles').update(updates, {
         returning: 'minimal', // Don't return the value after inserting
+      }).match({
+        email: user.email,
+        user_id: user.id
       })
 
       if (error) {
