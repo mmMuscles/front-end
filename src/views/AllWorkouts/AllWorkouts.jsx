@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getWorkouts } from '../../Services/wgerClient'
+import Workout from '../../Components/Workout'
 
 export default function AllWorkouts() {
 
@@ -20,14 +21,12 @@ export default function AllWorkouts() {
 
     return (
         <div>
-            {isLoading ? <h1>Loading...</h1> :
+            {isLoading ? <h1 className='text-xl font-bold'>Loading...</h1> :
             <ul>
-                {workouts.map((workout) => <div key={workout.id}>{workout.name}
-                <div dangerouslySetInnerHTML={{__html: workout.description}}></div>
-                </div>
-                )
-                }
-            </ul>}
+            {workouts.map((workout) => <li key={workout.id}>
+                <Workout name={workout.name} description={workout.description} category={workout.category} />
+            </li>)}</ul>
+            }
         </div>
     )
 }

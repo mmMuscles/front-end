@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../services/supabaseClient'
+import { supabase } from '../Services/supabaseClient'
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
@@ -29,7 +29,7 @@ export default function Account({ session }) {
           user_id: user.id
         })
         data = newProfile.data
-        
+
       } else if (error && status !== 406){
         throw error
       }

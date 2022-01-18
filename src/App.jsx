@@ -3,6 +3,7 @@ import './App.css';
 import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth'
 import AllWorkouts from './views/AllWorkouts/AllWorkouts';
+import Header from './components/Layout/Header';
 
 
 
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <>
+    <Header/>
     <Switch>
       <Route exact path='/'>
         <Home />
