@@ -1,4 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
+import { useUser } from '../context/UserContext';
+
 
 export const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 export const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY
@@ -18,4 +20,11 @@ export async function signUpUser(email, password) {
   }
   export function getUser() {
     return supabase.auth.user();
+  }
+  
+  export async function logOutUser() {
+    let { error } = await supabase.auth.signOut();
+    if (error) throw error;
+    return alert('You have logged out');
+
   }
