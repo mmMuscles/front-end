@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react/cjs/react.development";
 
 const workoutList = [
   "Rest",
@@ -12,8 +11,6 @@ const workoutList = [
   "Stretching",
 ];
 export default function CalenderList() {
-  const [workout, setWorkout] = useState([]);
-
   return (
     <div>
       <select className="dropdown">
