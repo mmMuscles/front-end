@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { useUser } from '../context/UserContext';
+
 
 
 export const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
