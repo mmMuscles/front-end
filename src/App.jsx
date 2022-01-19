@@ -9,7 +9,6 @@ import Profile from "./views/Profile/Profile";
 
 function App() {
   return (
-    <>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -30,7 +29,6 @@ function App() {
           <Profile />
         </Route>
       </Switch>
-    </>
   );
 }
 
