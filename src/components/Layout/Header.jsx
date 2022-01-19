@@ -15,9 +15,9 @@ export default function Header() {
 
     return (
         <header className='bg-slate-600 w-screen '>
-            <div ><Link className='bg-gray-300 rounded p-5 my-3' to='/'>Home</Link></div>
-            <div><Link className='bg-gray-300 rounded p-5 my-3' to='/profile'>Profile</Link></div>
-            <div><Link className='bg-gray-300 rounded p-5 my-15' to='/calendar'>Calendar</Link></div>
+            <div ><Link to='/' className='bg-gray-300 rounded p-5 my-3' >Home</Link></div>
+            <div><Link to='/profile' className='bg-gray-300 rounded p-5 my-3'>Profile</Link></div>
+            <div><Link  to='/calendar' className='bg-gray-300 rounded p-5 my-15'>Calendar</Link></div>
             
         <div>
          {email
