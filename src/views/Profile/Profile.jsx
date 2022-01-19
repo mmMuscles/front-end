@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Header from "../../components/Layout/Header";
 import { supabase } from "../../services/supabaseClient";
 
 export default function Profile({ session }) {
