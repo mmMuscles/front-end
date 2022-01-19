@@ -21,9 +21,11 @@ function App() {
           <CalendarDay />
         </Route>
         <Route path="/allworkouts">
+          <Header/>
           <AllWorkouts />
         </Route>
         <Route path="/profile">
+          <Header/>
           <Profile />
         </Route>
       </Switch>
