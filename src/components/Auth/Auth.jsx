@@ -22,9 +22,9 @@ export default function Auth() {
 }
 const authForm = (
     newUser
-        ? <div><Login className='form' /> <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-15' onClick={handleStatus}>Need to Sign Up?</button>
+        ? <div className='flex'><Login className='form' /> <button className='bg-slate-700 opacity-90 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded m-15' onClick={handleStatus}>Need to Sign Up?</button>
         </div>
-        : <div><SignUp className='form' />  <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-16 rounded m-15' onClick={handleStatus}>Need to Login?</button>
+        : <div className='flex'><SignUp className='form' />  <button className='bg-slate-700 opacity-90 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded m-15' onClick={handleStatus}>Need to Login?</button>
         </div>
 )
 

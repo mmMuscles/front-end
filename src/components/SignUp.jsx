@@ -25,19 +25,19 @@ export default function SignUp() {
         <>
         <form className='flex px-6 mx-6'>
             <fieldset>
-                <legend>Sign-up</legend>
-          <label htmlFor='email'>Email:</label>
+                {/* <legend>Sign-up</legend> */}
+          <label htmlFor='email'>email </label>
           <input
-            className="text-black"
+            className="text-black rounded-sm opacity-70 my-1 mr-6 pl-1"
             type="email"
             id='email'
             placeholder="Your email"
             value={userEmail}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor='password'>Password:</label>
+          <label htmlFor='password'>password </label>
            <input
-            className="text-black"
+            className="text-black rounded-sm opacity-70 my-1 pl-1"
             type="password"
             id='password'
             placeholder="Your password"
@@ -45,7 +45,7 @@ export default function SignUp() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button 
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-6 rounded'
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded'
           type='submit' onClick={handleSignup}>SignUp!</button>
           </fieldset>
         </form>
