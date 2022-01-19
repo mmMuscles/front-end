@@ -21,10 +21,15 @@ export async function signUpUser(email, password) {
   export function getUser() {
     return supabase.auth.user();
   }
-  
+
   export async function logOutUser() {
     let { error } = await supabase.auth.signOut();
     if (error) throw error;
     return alert('You have logged out');
 
+  }
+
+  export async function addWorkout({ workout_name, workout_description, workout_category, workout_id  }) {
+    const request = await supabase.from('workouts').insert([{ workout_name, workout_description, workout_category, workout_id  }]);
+    return request;
   }
