@@ -10,7 +10,7 @@ export default function Home() {
 
         <section className='m-8 p-10 bg-white bg-opacity-80 row-start-1 row-span-2 col-start-3 col-span-2 text-slate-600 flex items-top rounded'>
           <article className=''>
-          <p><b>mmmuscles</b> is an awesome and flexible fitness manager, along with a comprehensive and complete list of exercises. Simple to view, simple to use, made by simple people for simple people.</p>
+          <p><b>mmmuscles</b> is an awesome and flexible fitness manager. Schedule your day with a simple to use calendar. Select your workouts from a comprehensive and complete list of exercises. Simple to view, simple to use, made by simple people for simple people.</p>
           <br/>
           <p>Create an account today and start your journey to fitness nirvana.</p>
           <br/>

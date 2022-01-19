@@ -33,7 +33,7 @@ export default function Login() {
                 {/* <legend>Sign-in</legend> */}
           <label htmlFor='email'>email </label>
           <input
-            className="text-black rounded-sm opacity-70 my-1 mr-6"
+            className="text-black rounded-sm opacity-70 my-1 mr-6 pl-1"
             type="email"
             id='email'
             placeholder="Your email"
@@ -42,7 +42,7 @@ export default function Login() {
           />
           <label htmlFor='password'>password </label>
            <input
-            className="text-black rounded-sm opacity-70 my-1"
+            className="text-black rounded-sm opacity-70 my-1 pl-1"
             type="password"
             id='password'
             placeholder="Your password"
