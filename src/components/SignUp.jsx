@@ -1,27 +1,29 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
 import { signUpUser } from '../services/supabaseClient';
 
 export default function SignUp() {
-    const [email, setEmail] = useState('');
+    const [userEmail, setEmail] = useState('');
+    const { setUser } = useUser({id:'', email:''});
     const [password, setPassword] = useState('');
-    const [ history ] = useHistory()
+    const history = useHistory();
     const [isLoading, setLoading ] = useState(false)
 
     const handleSignup = async (e) => {
         e.preventDefault();
             try {
-                setLoading(true)
-                await signUpUser(email, password);
-                setLoading(false)
-                const redirecting = '/calendar' ;
+                setLoading(true);
+                const auth = await signUpUser(userEmail, password);
+                await setUser({id:auth.id, email: auth.email})
+                setLoading(false);
+                const redirecting = '/auth' ;
                 history.replace(redirecting)
             } catch (error) {
               throw error;
             }
           };
     
-
     return (
         <>
         <form>
@@ -33,7 +35,7 @@ export default function SignUp() {
             type="email"
             id='email'
             placeholder="Your email"
-            value={email}
+            value={userEmail}
             onChange={(e) => setEmail(e.target.value)}
           />
           <label htmlFor='password'>Password:</label>
@@ -41,7 +43,6 @@ export default function SignUp() {
             className="inputField"
             type="password"
             id='password'
-            minLength={8}
             placeholder="Your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
