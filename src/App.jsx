@@ -18,6 +18,7 @@ function App() {
           <CalendarHome />
         </Route>
         <Route path="/calendarday">
+          <Header/>
           <CalendarDay />
         </Route>
         <Route path="/allworkouts">
