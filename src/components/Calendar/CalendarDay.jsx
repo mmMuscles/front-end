@@ -6,10 +6,12 @@ export default function CalendarDay() {
       <p>
         Your daily workouts consist of:
         <ul>
-          <li>Muscles</li>
-          <li>Abs</li>
+          <li></li>
+          <li></li>
         </ul>
-        <button>Add new workout.</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Add new workout.
+        </button>
       </p>
     </div>
   );
