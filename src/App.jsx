@@ -6,6 +6,7 @@ import CalendarHome from "./components/Calendar/CalendarHome";
 import CalendarDay from "./components/Calendar/CalendarDay";
 import Profile from "./views/Profile/Profile";
 import Header from "./components/Layout/Header";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -13,21 +14,22 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/calendar">
+        <PrivateRoute path="/calendar">
           <Header/>
           <CalendarHome />
-        </Route>
-        <Route path="/calendarday">
+        </PrivateRoute>
+        <PrivateRoute path="/calendarday">
+          <Header/>
           <CalendarDay />
-        </Route>
-        <Route path="/allworkouts">
+        </PrivateRoute>
+        <PrivateRoute path="/allworkouts">
           <Header/>
           <AllWorkouts />
-        </Route>
-        <Route path="/profile">
+        </PrivateRoute>
+        <PrivateRoute path="/profile">
           <Header/>
           <Profile />
-        </Route>
+        </PrivateRoute>
       </Switch>
   );
 }
