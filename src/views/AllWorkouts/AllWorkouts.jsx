@@ -3,13 +3,17 @@ import { getWorkouts } from '../../services/wgerClient'
 import Workout from '../../components/Workout'
 import { addWorkout } from '../../services/supabaseClient'
 import { useWorkout } from '../../context/WorkoutContext'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { Link } from 'react-router-dom'
+import { useUser } from '../../context/UserContext'
+import { addWorkouts } from '../../services/supabaseClient'
 
 export default function AllWorkouts() {
 
     const [exercises, setExercises] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const {setWorkouts} = useWorkout();
+    const {user} = useUser()
+
 
     useEffect(() => {
 
@@ -26,7 +30,9 @@ export default function AllWorkouts() {
 
 
     const handleAdd = async (workout) => {
-        await addWorkout({ workout_name: workout.name, workout_description: workout.description, workout_category: workout.category, workout_id: workout.id  })
+        await addWorkout({ user_id: user.id,  theme: workout.category, workout_id: workout.id, date: new Date()  })
+
+        await addWorkouts({ workout_name: workout.name, workout_description: workout.description, workout_category: workout.category, workout_id: workout.id })
 
         setWorkouts((prevState) => [...prevState, workout])
 
@@ -36,7 +42,22 @@ export default function AllWorkouts() {
 
     return (
         <div>
-            <Link to='/calendarday'>Back To Day</Link>
+
+        <Link to='/calendarday'>Back To Day</Link>
+
+        {/* <select className="dropdown">
+        {exercises.category.map((theme) => {
+          return (
+            <option key={theme.id} value={theme}>
+              {theme}
+            </option>
+          );
+        })}
+      </select> */}
+
+
+
+
             {isLoading ? <h1 className='text-xl font-bold'>Loading...</h1> :
             <ul>
             {exercises.map((workout) => <li key={workout.id}>

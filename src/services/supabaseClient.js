@@ -27,7 +27,15 @@ export async function signUpUser(email, password) {
 
   }
 
-  export async function addWorkout({ workout_name, workout_description, workout_category, workout_id  }) {
+  export async function addWorkout({ theme, user_id, date, workout_id  }) {
+    const request = await supabase.from('day').insert([{ theme, user_id, date, workout_id  }]);
+    return request;
+  }
+
+  export async function addWorkouts({ workout_name, workout_description, workout_category, workout_id  }) {
     const request = await supabase.from('workouts').insert([{ workout_name, workout_description, workout_category, workout_id  }]);
     return request;
   }
+
+
+

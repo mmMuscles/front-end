@@ -4,6 +4,14 @@ export const getWorkouts = async () => {
     return data.results.map(workout => workoutMunger(workout))
 }
 
+export const workoutById = async (id) => {
+    const response = await fetch(`api/v2/exerciseiinfo/${id}`)
+    const data = await response.json()
+
+    return data.results.map(workout => workoutMunger(workout))
+
+}
+
 
 
 
