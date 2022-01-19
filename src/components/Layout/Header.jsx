@@ -2,13 +2,14 @@ import React from 'react'
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext'
 import { logOutUser } from '../../services/supabaseClient';
+import './Header.css'
 
 export default function Header() {
     const { user, setUser } = useUser();
     const { email } = user;
     const history  = useHistory();
 
-    const handleLogIn = async () => {
+    const handleLogIn = () => {
         const redirecting = '/auth' ;
         history.replace(redirecting)
     }
@@ -18,7 +19,8 @@ export default function Header() {
     }
 
     return (
-        <>
+        <header>
+        <div>
          {email
           ? <main>
               <h1>Hello {email}</h1>
@@ -29,9 +31,11 @@ export default function Header() {
               <h1>`Hello Friend`</h1>
               <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'  onClick={handleLogIn} >Log in</button>
             </main>}
-        {console.log({user})}
-        </>
+        </div>
+        <div></div>
+        <div></div>
+        </header>
     )
 }
 
-//comment 
+
