@@ -1,7 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
 
-
-
 export const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 export const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY
 
@@ -14,7 +12,7 @@ export async function signInUser(email, password) {
   }
 
 export async function signUpUser(email, password) {
-    const { user, error } = await supabase.auth.signUp({ email, password });
+    const { user, error} = await supabase.auth.signUp({ email, password });
     if (error) throw error;
     return user;
   }

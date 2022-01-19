@@ -24,4 +24,4 @@ const useUser = () => {
   return context;
 };
 
-export { UserContext, UserProvider, useUser };
+export { UserProvider, useUser };
