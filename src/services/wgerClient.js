@@ -28,4 +28,4 @@ const workoutMunger = (workout) => {
     return munger;
 }
 
-//https://wger.de/api/v2/exercise/?language=2&limit=100
+
