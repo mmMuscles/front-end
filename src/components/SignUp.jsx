@@ -17,7 +17,7 @@ export default function SignUp() {
                 const auth = await signUpUser(userEmail, password);
                 await setUser({id:auth.id, email: auth.email})
                 setLoading(false);
-                const redirecting = '/auth' ;
+                const redirecting = '/profile' ;
                 history.replace(redirecting)
             } catch (error) {
               throw error;
@@ -26,7 +26,7 @@ export default function SignUp() {
     
     return (
         <>
-        <form>
+        <form className='flex px-6 mx-6'>
             <fieldset>
                 <legend>Sign-up</legend>
           <label htmlFor='email'>Email:</label>
@@ -48,7 +48,7 @@ export default function SignUp() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button 
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-6 rounded'
           type='submit' onClick={handleSignup}>SignUp!</button>
           </fieldset>
         </form>

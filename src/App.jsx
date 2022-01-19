@@ -1,11 +1,11 @@
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./views/Home/Home";
-import Auth from "./views/Auth/Auth";
 import AllWorkouts from "./views/AllWorkouts/AllWorkouts";
 import CalendarHome from "./components/Calendar/CalendarHome";
 import CalendarDay from "./components/Calendar/CalendarDay";
 import Profile from "./views/Profile/Profile";
+import Header from "./components/Layout/Header";
 
 function App() {
   return (
@@ -13,19 +13,19 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/auth">
-          <Auth />
-        </Route>
         <Route path="/calendar">
+          <Header/>
           <CalendarHome />
         </Route>
         <Route path="/calendarday">
           <CalendarDay />
         </Route>
         <Route path="/allworkouts">
+          <Header/>
           <AllWorkouts />
         </Route>
         <Route path="/profile">
+          <Header/>
           <Profile />
         </Route>
       </Switch>

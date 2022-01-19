@@ -1,0 +1,15 @@
+.footie {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    height: 150px;
+    color: beige;
+    padding: 15px;
+}
+.footie > button {
+    max-width: 10px;
+}
