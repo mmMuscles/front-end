@@ -5,6 +5,7 @@ import Auth from "./views/Auth/Auth";
 import AllWorkouts from "./views/AllWorkouts/AllWorkouts";
 import CalendarList from "./components/Calendar/CalendarList";
 import CalendarDay from "./components/Calendar/CalendarDay";
+import Profile from "./views/Profile/Profile";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/allworkouts">
           <AllWorkouts />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </>
