@@ -1,22 +1,19 @@
 import { useState } from 'react';
+import Header from '../../components/Layout/Header';
 import Login from '../../components/Login';
 import SignUp from '../../components/SignUp';
 import { useUser } from '../../context/UserContext';
-import { logOutUser } from '../../services/supabaseClient';
 import './Auth.css'
 
 
 export default function Auth() {
-  const { user, setUser } = useUser();
+  const { user} = useUser();
   const [ newUser, setNewUser ] = useState(true)
 
  const handleStatus = () => {
     setNewUser(!newUser)
  }
- const logout = async() => {
-    await logOutUser();
-    setUser('')
- }
+ 
 
 const authForm = (
     newUser
@@ -28,9 +25,9 @@ const authForm = (
 
   return (
    <>
-   
+   <Header/>
    <div className='flex-col'>
-    {user.email ? <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={logout}>Logout</button>: authForm}
+    {user.email ? <h1>something goes here</h1>: authForm}
    </div>
    </>
   )
