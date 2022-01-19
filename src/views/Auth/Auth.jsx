@@ -3,21 +3,17 @@ import Header from '../../components/Layout/Header';
 import Login from '../../components/Login';
 import SignUp from '../../components/SignUp';
 import { useUser } from '../../context/UserContext';
-import { logOutUser } from '../../services/supabaseClient';
 import './Auth.css'
 
 
 export default function Auth() {
-  const { user, setUser } = useUser();
+  const { user} = useUser();
   const [ newUser, setNewUser ] = useState(true)
 
  const handleStatus = () => {
     setNewUser(!newUser)
  }
- const logout = async() => {
-    await logOutUser();
-    setUser('')
- }
+ 
 
 const authForm = (
     newUser

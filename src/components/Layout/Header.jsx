@@ -8,7 +8,6 @@ export default function Header() {
     const { email } = user;
     
 
-    
     const handleLogOut = async () => {
         setUser({ email:'', id:''})
         await logOutUser();

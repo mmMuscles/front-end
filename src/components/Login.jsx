@@ -18,7 +18,7 @@ export default function Login() {
                 setUser({id:auth.id, email: auth.email})
                 setLoading(false);
                 const redirecting = '/calendar' ;
-                await history.replace(redirecting)
+                history.replace(redirecting)
             } catch (error) {
               throw error;
             }
