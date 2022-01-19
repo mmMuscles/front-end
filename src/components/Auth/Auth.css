@@ -4,9 +4,9 @@
     justify-content: space-between;
     box-sizing: border-box;
     position: fixed;
-    bottom: 0px;
-    width: 100vw;
-    height: 150px;
+    bottom: 30px;
+    /* width: 100vw; */
+    /* height: 150px; */
     color: beige;
     padding: 15px;
 }
