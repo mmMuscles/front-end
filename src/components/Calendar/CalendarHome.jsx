@@ -4,7 +4,7 @@ import moment from "moment";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import CalenderList from "../../views/Calender/CalenderList";
 
-export default function CalendarList() {
+export default function CalendarHome() {
   const [date, setDate] = useState(new Date());
 
   const handleData = (e) => {
@@ -12,24 +12,19 @@ export default function CalendarList() {
   };
 
   return (
-    <div>
+    <>
       <Calendar value={date} onChange={handleData} />
-
-      <p>
-        Workout for <b>{moment(date).format("MMMM Do YYYY")}</b>
-        <p>Today's focus section is: {<CalenderList />}</p>
-        <p>
-          Your daily workouts consist of:
-          <ul>
-            <li></li>
-          </ul>
-        </p>
-      </p>
+      Workout for <b>{moment(date).format("MMMM Do YYYY")}</b>
+      <p>Today's focus section is: {<CalenderList />}</p>
+      Your daily workouts consist of:
+      <ul>
+        <li></li>
+      </ul>
       <Link to="/calendarday">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Adjust Your Day.
         </button>
       </Link>
-    </div>
+    </>
   );
 }

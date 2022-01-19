@@ -13,7 +13,7 @@ const themeList = [
 ];
 export default function CalenderList() {
   return (
-    <div>
+    <>
       <select className="dropdown">
         {themeList.map((theme) => {
           return (
@@ -23,6 +23,6 @@ export default function CalenderList() {
           );
         })}
       </select>
-    </div>
+    </>
   );
 }
