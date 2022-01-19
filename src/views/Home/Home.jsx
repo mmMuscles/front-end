@@ -1,12 +1,12 @@
-
 import './Home.css'
+import Auth from "../../components/Auth/Auth";
 
 export default function Home() {
   return (
     <>
       <main className='min-h-screen grid grid-cols-4 grid-rows-3'>
         
-        <h1 className='text-white font-black text-4xl row-start-1 row-span-3 col-start-1 col-span-4 bg-black p-4'>mmmuscles</h1>
+        <h1 className='text-white font-black text-4xl row-start-1 row-span-3 col-start-1 col-span-4 bg-black p-4 home-back'>mmmuscles</h1>
 
         {/* <section className='m-8 row-start-1 row-span-2 col-start-2 flex flex-col text-slate-400 text-sm font-medium justify-center'>
           <span>weekly view</span><img alt='week_view' src='week_view.png' width='300' />
@@ -24,12 +24,10 @@ export default function Home() {
         </section>
 
 
-        <section className='m-8 row-start-3 col-start-1 col-span-4 text-slate-500 flex justify-center bg-white'>
-        <span>login: </span>
-        <label>email<input/></label>
-        <label>password<input/></label>
+        <section className='m-8 row-start-3 col-start-1 col-span-4 flex justify-center'>
+          <Auth/>
         </section>
-
+        
       </main>
     </>
   );

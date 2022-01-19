@@ -84,6 +84,7 @@ export default function Profile({ session }) {
 
   return (
     <div className="form-widget">
+      
       {/* <div>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={session.user.email} disabled />
