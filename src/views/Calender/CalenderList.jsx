@@ -1,6 +1,7 @@
 import React from "react";
+import { useState } from "react/cjs/react.development";
 
-const workoutList = [
+const themeList = [
   "Rest",
   "Legs",
   "Arms",
@@ -14,7 +15,13 @@ export default function CalenderList() {
   return (
     <div>
       <select className="dropdown">
-        <option value={workoutList}></option>
+        {themeList.map((theme) => {
+          return (
+            <option key={theme} value={theme}>
+              {theme}
+            </option>
+          );
+        })}
       </select>
     </div>
   );

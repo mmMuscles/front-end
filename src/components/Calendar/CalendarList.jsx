@@ -21,8 +21,7 @@ export default function CalendarList() {
         <p>
           Your daily workouts consist of:
           <ul>
-            <li>Muscles</li>
-            <li>Abs</li>
+            <li></li>
           </ul>
         </p>
       </p>
