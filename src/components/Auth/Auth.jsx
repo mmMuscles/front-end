@@ -35,8 +35,8 @@ const authForm = (
               <h1>Hello, {user.email}</h1>
                 <button className='bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded w-22 border-4'
                 onClick={handleLogOut} >Log out</button>
-                <Link className='bg-slate-500 hover:bg-slate-700 rounded px-5 m-5' to='/calendar'>Calendar</Link>
-                <Link className='bg-slate-500 hover:bg-slate-700 rounded px-5 m-5' to='/profile'>Profile</Link>
+                <Link to='/calendar' className='bg-slate-500 hover:bg-slate-700 rounded px-5 m-5' >Calendar</Link>
+                <Link to='/profile' className='bg-slate-500 hover:bg-slate-700 rounded px-5 m-5' >Profile</Link>
           </main>: authForm}
    </div>
    </>
