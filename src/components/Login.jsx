@@ -17,7 +17,7 @@ export default function Login() {
                 const auth = await signInUser(userEmail, password);
                 setUser({id:auth.id, email: auth.email})
                 setLoading(false);
-                const redirecting = '/auth' ;
+                const redirecting = '/calendar' ;
                 history.replace(redirecting)
             } catch (error) {
               throw error;

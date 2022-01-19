@@ -1,4 +1,8 @@
 header {
     display: grid;
-    grid-template-columns: 1fr 50% 1fr;
+    grid-template-columns: 50% 1fr 1fr;
+}
+header > div {
+    display: flex;
+    flex-direction: column;
 }

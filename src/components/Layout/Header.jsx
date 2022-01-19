@@ -20,19 +20,19 @@ export default function Header() {
 
     return (
         <header>
-        <div>
+            <div></div>
+        <div className='bg-red-300 w-screen'>
          {email
           ? <main>
               <h1>Hello {email}</h1>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                <button className='bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded w-36 border-4'
                 onClick={handleLogOut} >Log out</button>
           </main>
           : <main>
               <h1>`Hello Friend`</h1>
-              <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'  onClick={handleLogIn} >Log in</button>
+              <button className='bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded border-4'  onClick={handleLogIn} >Log in</button>
             </main>}
         </div>
-        <div></div>
         <div></div>
         </header>
     )
