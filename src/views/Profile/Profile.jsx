@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Header from "../../components/Layout/Header";
 import { supabase } from "../../services/supabaseClient";
 
 export default function Profile({ session }) {
@@ -84,6 +85,7 @@ export default function Profile({ session }) {
 
   return (
     <div className="form-widget">
+      <Header/>
       {/* <div>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={session.user.email} disabled />

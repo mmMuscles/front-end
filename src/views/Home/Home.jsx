@@ -1,3 +1,5 @@
+import Auth from "../../components/Auth/Auth";
+
 export default function Home() {
   return (
     <>
@@ -20,7 +22,7 @@ export default function Home() {
         <label>email<input/></label>
         <label>password<input/></label>
         </section>
-
+        <Auth/>
       </main>
     </>
   );
