@@ -5,10 +5,10 @@ import Auth from "./views/Auth/Auth";
 import AllWorkouts from "./views/AllWorkouts/AllWorkouts";
 import CalendarHome from "./components/Calendar/CalendarHome";
 import CalendarDay from "./components/Calendar/CalendarDay";
+import Profile from "./views/Profile/Profile";
 
 function App() {
   return (
-    <>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -25,8 +25,10 @@ function App() {
         <Route path="/allworkouts">
           <AllWorkouts />
         </Route>
+        <Route path="/profile">
+          <Profile />
+        </Route>
       </Switch>
-    </>
   );
 }
 
