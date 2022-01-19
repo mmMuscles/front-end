@@ -1,59 +1,37 @@
-import { useState } from 'react'
-import { supabase } from '../../services/supabaseClient'
+import { useState } from 'react';
+import Login from '../../components/Login';
+import SignUp from '../../components/SignUp';
+import { useUser } from '../../context/UserContext';
+import { logOutUser } from '../../services/supabaseClient';
+import './Auth.css'
 
 
 export default function Auth() {
-  const [loading, setLoading] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const { user, setUser } = useUser();
+  const [ newUser, setNewUser ] = useState(true)
 
-  const handleLogin = async (email, password) => {
-    try {
-      setLoading(true)
-      const { error } = await supabase.auth.signUp({ email , password})
-      if (error) throw error
-      alert('Check your email for the login link!')
-    } catch (error) {
-      alert(error.error_description || error.message)
-    } finally {
-      setLoading(false)
-    }
-  }
+ const handleStatus = () => {
+    setNewUser(!newUser)
+ }
+ const logout = async() => {
+    await logOutUser();
+    setUser('')
+ }
+
+const authForm = (
+    newUser
+        ? <div><Login className='form' /> <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={handleStatus}>Need to Sign Up?</button>
+        </div>
+        : <div><SignUp className='form' />  <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={handleStatus}>Need to Login?</button>
+        </div>
+)
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header">Supabase + React</h1>
-        <p className="description">Sign in via magic link with your email below</p>
-        <div>
-          <input
-            className="inputField"
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-           <input
-            className="inputField"
-            type="password"
-            placeholder="Your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              handleLogin(email,password)
-            }}
-            className={'button block'}
-            disabled={loading}
-          >
-            {loading ? <span>Loading</span> : <span>Send magic link</span>}
-          </button>
-        </div>
-      </div>
-    </div>
+   <>
+   
+   <div className='flex-col'>
+    {user.email ? <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={logout}>Logout</button>: authForm}
+   </div>
+   </>
   )
 }
