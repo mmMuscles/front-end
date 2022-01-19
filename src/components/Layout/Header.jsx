@@ -1,5 +1,4 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext'
 import { logOutUser } from '../../services/supabaseClient';
 import './Header.css'
