@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./views/Home/Home";
 import Auth from "./views/Auth/Auth";
 import AllWorkouts from "./views/AllWorkouts/AllWorkouts";
-import CalendarList from "./components/Calendar/CalendarList";
+import CalendarHome from "./components/Calendar/CalendarHome";
 import CalendarDay from "./components/Calendar/CalendarDay";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Auth />
         </Route>
         <Route path="/calendar">
-          <CalendarList />
+          <CalendarHome />
         </Route>
         <Route path="/calendarday">
           <CalendarDay />
