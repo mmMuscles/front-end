@@ -28,30 +28,14 @@ export default function AllWorkouts() {
             const getArray = await getWorkoutArray(date, user.id)
             setWorkouts(getArray);
             setIsLoading(false)
-            
+
         }
         getAllWorkouts()
 
-<<<<<<< HEAD
-    }, [date, setWorkouts, user.id])
-
-
-
-    const handleAdd = async (workout) => {
-
-        //if workout array in table... add workout.id to array ...start new array with workout.id
-
-        await addWorkout({ user_id: user.id,  theme: workout.category, workouts: [workout.id], date: date})
-        //munge data
-        // await addWorkouts({ workout_name: workout.name, workout_description: workout.description, workout_category: workout.category, workout_id: workout.id })
-        setWorkouts((prevState) => [...prevState, workout.id])
-        setAdded(true)
-=======
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date])
->>>>>>> b7966626a001b7fa66cab40372d85a61d28deeaf
 
-    const handleAdd = async (workout) => {        
+    const handleAdd = async (workout) => {
        await addWorkout({ user_id: user.id, workouts: JSON.stringify([workout.id]), date: date})
         setWorkouts((prevState) => [...prevState, workout.id])
     }
@@ -66,19 +50,6 @@ export default function AllWorkouts() {
 
         <Link to='/calendar?date='><button>Back To Day</button></Link>
 
-<<<<<<< HEAD
-        {/* <select className="dropdown">
-        {exercises.results.category.map((theme) => {
-          return (
-            <option key={theme.id} value={theme}>
-              {theme}
-            </option>
-          );
-        })}
-      </select> */}
-
-=======
->>>>>>> b7966626a001b7fa66cab40372d85a61d28deeaf
             {isLoading ? <h1 className='text-xl font-bold'>Loading...</h1> :
 
             <ul>
