@@ -89,7 +89,7 @@ export default function Profile() {
   return (
     <main className="profile-back h-screen flex flex-col">
       <form
-        className="flex flex-col w-1/2 ml-96 mt-14 space-y-2 text-slate-500"
+        className="profile-form"
         onSubmit={(e) => updateProfile(e)}
       >
         <section>
@@ -144,7 +144,7 @@ export default function Profile() {
         </section>
 
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24"
+          className="hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24"
           disabled={loading}
         >
           {loading ? "updating" : "Update"}

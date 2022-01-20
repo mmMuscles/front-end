@@ -3,16 +3,47 @@
     background-size: cover;
 }
 
-.profile-back label {
-    margin: 1rem;
-    color: white;
+.profile-back {
 }
 
 /* * {
     border: violet 1px solid;
 } */
 
-/* .profile-form {
-    display: flex;
-    flex-direction: column;
-} */
+.profile-form {
+    margin-left: 5rem;
+    margin-top: 5rem;
+}
+
+.profile-form label {
+    font-size: 1.25rem;
+    color: lightgrey;
+    display: inline-block;
+    min-width: 200px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.profile-form input {
+    font-size: 1.25rem;
+    background-color: black;
+    color: orange;
+    box-shadow: rgb(100, 100, 100) 0px 0px 5px;
+    padding: 0.5rem;
+    border-radius: .25rem;
+    font-weight: bold;
+    opacity: 90%;
+}
+
+.profile-form section {
+    margin: 1rem;
+}
+
+.profile-form button {
+    background-color: darkorange;
+    margin-top: 1rem;
+}
+
+.profile-form button:hover {
+    background-color: orange;
+}
