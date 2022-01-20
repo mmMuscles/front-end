@@ -48,9 +48,10 @@ export default function Profile() {
       }
     }
     getProfile();
-  }, [user.email, user.id, setProfile, ]);
+  }, [user.email, user.id, setProfile]);
 
-  async function updateProfile({ username, goal_1, goal_2, weight, weight_goal }) {
+  async function updateProfile(e) {
+    e.preventDefault();
     try {
       setLoading(true);
       const user = supabase.auth.user();
@@ -82,11 +83,12 @@ export default function Profile() {
     } finally {
       setLoading(false);
     }
+    setProfile({username: username})
   }
 
   return (
     <main className='profile-back h-screen flex flex-col'>
-    <div className='flex flex-col w-1/2 ml-96 mt-14 space-y-2 text-slate-500'>
+    <form className='flex flex-col w-1/2 ml-96 mt-14 space-y-2 text-slate-500' onSubmit={(e) => updateProfile(e)}>
 
       <section>
         <label htmlFor="username">Name </label>
@@ -141,7 +143,6 @@ export default function Profile() {
 
         <button
           className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24'
-          onClick={() => updateProfile({ username, goal_1, goal_2, weight, weight_goal })}
           disabled={loading}
         >
           {loading ? "Loading ..." : "Update"}
@@ -152,7 +153,7 @@ export default function Profile() {
           Sign Out
         </button>
       </div> */}
-    </div>
+    </form>
     </main>
   );
 }
