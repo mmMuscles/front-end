@@ -14,21 +14,20 @@ export default function Header() {
     }
 
     return (
-        <header className='bg-slate-600 w-screen '>
-            <div ><Link to='/' className='bg-gray-300 rounded p-5 my-3' >Home</Link></div>
-            <div><Link to='/profile' className='bg-gray-300 rounded p-5 my-3'>Profile</Link></div>
-            <div><Link  to='/calendar' className='bg-gray-300 rounded p-5 my-15'>Calendar</Link></div>
+        <header className='text-slate-400 font-bold items-center justify-items-center'>
+            <div hidden><Link to='/' className='' >Home</Link></div>
+            <div><Link to='/profile' className=''>profile</Link></div>
+            <div><Link  to='/calendar' className=''>calendar</Link></div>
             
         <div>
          {email
-          ? <main className='flex'>
-              <h1 className='text-white'>Hello, {email}</h1>
-                <button className='bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded w-22 border-4'
+          ? <main className='flex items-center'>
+              <h1 className='text-gray-600'>Hello, {user.email}</h1>
+                <button className='bg-gray-300 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24'
                 onClick={handleLogOut} >Log out</button>
           </main>
           : <main>
               <h1>Hello, Friend</h1>
-              
             </main>}
         </div>
         </header>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../services/supabaseClient";
+import './Profile.css'
 
 export default function Profile({ session }) {
   const [loading, setLoading] = useState(true);
@@ -83,71 +84,66 @@ export default function Profile({ session }) {
   }
 
   return (
-    <div className="form-widget">
-      
-      {/* <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
-      </div> */}
-      <div>
-        <label htmlFor="username">Name: </label>
-        <input
+    <main className='profile-back h-screen flex flex-col'>
+    <div className='flex flex-col w-1/2 ml-96 mt-14 space-y-2 text-slate-500'>
+
+      <section>
+        <label htmlFor="username">Name </label>
+        <input 
           id="username"
           type="text"
           value={username || ""}
           onChange={(e) => setUsername(e.target.value)}
         />
-      </div>
+      </section>
 
-      <div>
-        <label htmlFor="goal_1">Primary Goal: </label>
+      <section>
+        <label htmlFor="goal_1">Primary Goal </label>
         <input
           id="goal_1"
           type="goal_1"
           value={goal_1 || ""}
           onChange={(e) => setGoal1(e.target.value)}
         />
-      </div>
+      </section>
 
-      <div>
-        <label htmlFor="goal_2">Secondary Goal: </label>
+      <section>
+        <label htmlFor="goal_2">Secondary Goal </label>
         <input
           id="goal_2"
           type="goal_2"
           value={goal_2 || ""}
           onChange={(e) => setGoal2(e.target.value)}
         />
-      </div>
+      </section>
 
-      <div>
-        <label htmlFor="goal_3">Other Goals: </label>
+      <section>
+        <label htmlFor="goal_3">Other Goals </label>
         <input
           id="goal_3"
           type="goal_3"
           value={goal_3 || ""}
           onChange={(e) => setGoal3(e.target.value)}
         />
-      </div>
+      </section>
 
-      <div>
-        <label htmlFor="weight">Weight: </label>
+      <section>
+        <label htmlFor="weight">Weight </label>
         <input
           id="weight"
           type="weight"
           value={weight || ""}
           onChange={(e) => setWeight(e.target.value)}
         />
-      </div>
+      </section>
 
-      <div>
         <button
-          // className="button block primary"
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24'
           onClick={() => updateProfile({ username, goal_1, goal_2, goal_3, weight })}
           disabled={loading}
         >
           {loading ? "Loading ..." : "Update"}
         </button>
-      </div>
 
       {/* <div>
         <button className="button block" onClick={() => supabase.auth.signOut()}>
@@ -155,5 +151,6 @@ export default function Profile({ session }) {
         </button>
       </div> */}
     </div>
+    </main>
   );
 }

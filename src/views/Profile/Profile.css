@@ -1,0 +1,9 @@
+.profile-back {
+    background-image: url('../../assets/download.jpeg');
+    background-size: cover;
+}
+
+.profile-back label {
+    margin: 1rem;
+    color: white;
+}
