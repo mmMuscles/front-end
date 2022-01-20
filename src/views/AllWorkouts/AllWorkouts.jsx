@@ -18,7 +18,6 @@ export default function AllWorkouts() {
     const date = location.search.split('=')[1]
     const {user} = useUser()
 
-    
     useEffect(() => {
 
         const getAllWorkouts = async () => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { signUpUser } from '../services/supabaseClient';
 
@@ -6,7 +7,8 @@ export default function SignUp() {
     const [userEmail, setEmail] = useState('');
     const { setUser } = useUser({id:'', email:''});
     const [password, setPassword] = useState('');
-    const [isLoading, setLoading ] = useState(false)
+    const [isLoading, setLoading ] = useState(false);
+    const history = useHistory();
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -15,7 +17,8 @@ export default function SignUp() {
                 const auth = await signUpUser(userEmail, password);
                 await setUser({id:auth.id, email: auth.email})
                 setLoading(false);
-                alert('please check your email to verify your account')
+                const redirecting = '/profile' ;
+                history.replace(redirecting)
             } catch (error) {
               throw error;
             }

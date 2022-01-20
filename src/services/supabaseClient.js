@@ -46,11 +46,3 @@ export async function signUpUser(email, password) {
         return []
         }
   }
-
-      
-
-  
-  // export async function addWorkouts({ workout_name, workout_description, workout_category, workout_id  }) {
-  //   const request = await supabase.from('workouts').insert([{ workout_name, workout_description, workout_category, workout_id  }]);
-  //   return request;
-  // }
