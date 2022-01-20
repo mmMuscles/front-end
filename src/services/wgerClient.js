@@ -15,8 +15,6 @@ export const workoutById = async (id) => {
 
 
 
-
-
 const workoutMunger = (workout) => {
     const munger = {
         id: workout.id,

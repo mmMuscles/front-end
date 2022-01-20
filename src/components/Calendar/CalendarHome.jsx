@@ -22,7 +22,7 @@ export default function CalendarHome() {
       Your daily workouts consist of:
       {workouts &&
       <ul>
-        {workouts.map((workout) => <li>{workout.name}</li>)}
+        {workouts.map((workout) => <li key={workout.id}>{workout.name}</li>)}
       </ul>}
       <Link to={`/allworkouts?date=${selectedDate}`}>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
