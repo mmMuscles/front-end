@@ -27,8 +27,8 @@ export async function signUpUser(email, password) {
 
   }
 
-  export async function addWorkout({ theme, user_id, date, workout_id  }) {
-    const request = await supabase.from('day').insert([{ theme, user_id, date, workout_id  }]);
+  export async function addWorkout({ theme, user_id, date, workouts  }) {
+    const request = await supabase.from('day').insert([{ theme, user_id, date, workouts  }]);
     return request;
   }
 
@@ -36,7 +36,7 @@ export async function signUpUser(email, password) {
 
 
   export const getWorkoutArray = async (currentDate, id) => {
-      const request = await supabase.from('day').select('workouts').eq('date', currentDate)
+      const request = await supabase.from('day').select('workouts').match({'date': currentDate, 'user_id': id})
       console.log(currentDate)
 
       console.log(request)
