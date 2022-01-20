@@ -18,7 +18,6 @@ export default function AllWorkouts() {
     const date = location.search.split('=')[1]
     const {user} = useUser()
 
-    console.log(date)
     useEffect(() => {
 
         const getAllWorkouts = async () => {
@@ -27,39 +26,22 @@ export default function AllWorkouts() {
             const getArray = await getWorkoutArray(date, user.id)
             setWorkouts(getArray);
             setIsLoading(false)
-            console.log(allWorkouts)
+            
         }
         getAllWorkouts()
 
-    }, [date, setWorkouts, user.id])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [date])
 
-
-
-    const handleAdd = async (workout) => {
-
-        //if workout array in table... add workout.id to array ...start new array with workout.id
-
-        await addWorkout({ user_id: user.id,  theme: workout.category, workouts: [workout.id], date: date})
-        //munge data
-        // await addWorkouts({ workout_name: workout.name, workout_description: workout.description, workout_category: workout.category, workout_id: workout.id })
-        // setWorkouts((prevState) => [...prevState, workout])
-
+    const handleAdd = async (workout) => {        
+       await addWorkout({ user_id: user.id, workouts: JSON.stringify([workout.id]), date: date})
+        setWorkouts((prevState) => [...prevState, workout.id])
     }
 
     return (
         <div>
 
         <Link to='/calendar?date='>Back To Day</Link>
-
-        {/* <select className="dropdown">
-        {exercises.category.map((theme) => {
-          return (
-            <option key={theme.id} value={theme}>
-              {theme}
-            </option>
-          );
-        })}
-      </select> */}
 
             {isLoading ? <h1 className='text-xl font-bold'>Loading...</h1> :
             <ul>
