@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getWorkouts, nextPage } from '../../services/wgerClient'
+import { getWorkouts } from '../../services/wgerClient'
 import Workout from '../../components/Workout'
 import { addWorkout, deleteWorkout } from '../../services/supabaseClient'
 import { useWorkout } from '../../context/WorkoutContext'
