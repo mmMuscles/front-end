@@ -26,8 +26,8 @@ export async function signUpUser(email, password) {
     return alert('You have logged out');
   }
 
-  export async function addWorkout({  user_id, date, workouts  }) {
-    const request = await supabase.from('day').insert([{ user_id, date, workouts  }]);
+  export async function addWorkout(  user_id, date, workouts ) {
+    const request = await supabase.from('day').insert({ user_id, date, workouts  });
     console.log(request.data)
     return request.data;
   }

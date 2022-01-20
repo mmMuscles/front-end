@@ -9,6 +9,7 @@ import { getWorkoutArray } from '../../services/supabaseClient'
 
 import { useLocation } from 'react-router-dom'
 import Card from '../../components/Card/Card'
+import { mungeWorkouts } from '../../utils/utils'
 
 export default function AllWorkouts() {
 
@@ -35,11 +36,7 @@ export default function AllWorkouts() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date, offset])
 
-    const handleAdd = async (workout) => {
-       await addWorkout({ user_id: user.id, workouts: JSON.stringify([workout.id]), date: date})
-        setWorkouts((prevState) => [...prevState, workout.id])
 
-    }
 
     const handleRemove = async (id) => {
         const confirmDelete = window.confirm('Would you like to remove workout from list?')
@@ -48,6 +45,19 @@ export default function AllWorkouts() {
             const arrayAfterDelete = await getWorkoutArray()
             setWorkouts(arrayAfterDelete)
         }
+    }
+
+
+
+    const handleAdd = async (workout) => {
+      const dayWorkouts = await getWorkoutArray(date, user.id)
+      const simpleArray = dayWorkouts.map((object) => object.workouts)
+       const checkDupes = mungeWorkouts(simpleArray, JSON.stringify(workout.id));
+       console.log(checkDupes,simpleArray, workout.id,)
+      checkDupes
+      ? console.log('workout already added for day')
+      :  await addWorkout(user.id, date, workout.id)
+
 
     }
 
@@ -68,4 +78,3 @@ export default function AllWorkouts() {
         </div>
     )
 }
-//
