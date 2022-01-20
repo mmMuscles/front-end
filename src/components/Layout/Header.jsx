@@ -17,7 +17,10 @@ export default function Header() {
         <header className='text-slate-400 font-bold items-center justify-items-center'>
             <div hidden><Link to='/' className='' >Home</Link></div>
             <div><Link to='/profile' className=''>profile</Link></div>
-            <div><Link  to='/calendar' className=''>calendar</Link></div>
+            {profile.username 
+            ? <div><Link to='/calendar' className=''>calendar</Link></div>
+            : <div>calendar</div>
+            }
             
         <div>
          {email
