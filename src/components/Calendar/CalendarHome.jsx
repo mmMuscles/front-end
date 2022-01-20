@@ -35,13 +35,15 @@ export default function CalendarHome() {
         </div>
       )}
       {!workouts ? (
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Add New Workouts
-        </button>
+        <Link to={`/allworkouts?date=${selectedDate}`}>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Add Workouts
+          </button>
+        </Link>
       ) : (
         <Link to={`/allworkouts?date=${selectedDate}`}>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Add workouts
+            Add more workouts
           </button>
         </Link>
       )}
