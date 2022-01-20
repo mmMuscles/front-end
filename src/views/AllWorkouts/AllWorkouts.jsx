@@ -64,7 +64,7 @@ export default function AllWorkouts() {
     return (
         <div>
 
-        <Link to='/calendar?date='><button>Back To Day</button></Link>
+        <Link to={`/calendar?date=${date}`}><button>Back To Day</button></Link>
 
             {offset > 0 ? <button  onClick={() => setOffset(offset - 10)} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Prev Page</button> : null}
             {exercises.length >= 10 ? <button onClick={() => setOffset(offset + 10)} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Next Page</button> : null}
