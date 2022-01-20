@@ -5,7 +5,7 @@ import { logOutUser } from '../../services/supabaseClient';
 import './Header.css'
 
 export default function Header() {
-    const { user, setUser } = useUser();
+    const { user, setUser, profile } = useUser();
     const { email } = user;
     
     const handleLogOut = async () => {
@@ -22,7 +22,7 @@ export default function Header() {
         <div>
          {email
           ? <main className='flex items-center'>
-              <h1 className='text-gray-600'>Hello, {user.email}</h1>
+              <h1 className='text-gray-600'>Hello, {profile.username}</h1>
                 <button className='bg-gray-300 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24'
                 onClick={handleLogOut} >Log out</button>
           </main>

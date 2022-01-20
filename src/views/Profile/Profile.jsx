@@ -1,55 +1,56 @@
 import { useState, useEffect } from "react";
+import { useUser } from "../../context/UserContext";
 import { supabase } from "../../services/supabaseClient";
 import './Profile.css'
 
-export default function Profile({ session }) {
+export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [goal_1, setGoal1] = useState(null);
   const [goal_2, setGoal2] = useState(null);
-  const [goal_3, setGoal3] = useState(null);
   const [weight, setWeight] = useState(null);
+  const [weight_goal, setWeightGoal] = useState(null);
+  const {user, setProfile} = useUser();
 
   useEffect(() => {
-    getProfile();
-  }, [session]);
-
-  async function getProfile() {
-    try {
-      setLoading(true);
-      const user = supabase.auth.user();
-
-      let { data, error, status } = await supabase
-        .from("profiles")
-        .select(`username, goal_1, goal_2, goal_3, weight`)
-        .eq("email", user.email)
-        .single();
-
-      if (error && status === 406) {
-        let newProfile = await supabase.from("profiles").insert({
-          email: user.email,
-          user_id: user.id,
-        });
-        data = newProfile.data;
-      } else if (error && status !== 406) {
-        throw error;
+    async function getProfile() {
+      try {
+        setLoading(true);
+  
+        let { data, error, status } = await supabase
+          .from("profiles")
+          .select(`username, goal_1, goal_2, weight, weight_goal`)
+          .eq("email", user.email)
+          .single();
+  
+        if (error && status === 406) {
+          const newProfile = await supabase.from("profiles").insert({
+            email: user.email,
+            user_id: user.id,
+          });
+          data = newProfile.data;
+        } else if (error && status !== 406) {
+          throw error;
+        }
+  
+        if (data) {
+          setProfile({username: data.username})
+          setUsername(data.username);
+          setGoal1(data.goal_1);
+          setGoal2(data.goal_2);
+          setWeight(data.weight);
+          setWeightGoal(data.weight_goal)
+        }
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        setLoading(false);
       }
-
-      if (data) {
-        setUsername(data.username);
-        setGoal1(data.goal_1);
-        setGoal2(data.goal_2);
-        setGoal3(data.goal_3);
-        setWeight(data.weight);
-      }
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      setLoading(false);
     }
-  }
+    getProfile();
+  }, [user.email, user.id, setProfile, ]);
 
-  async function updateProfile({ username, goal_1, goal_2, goal_3, weight }) {
+  async function updateProfile({ username, goal_1, goal_2, weight, weight_goal }) {
     try {
       setLoading(true);
       const user = supabase.auth.user();
@@ -58,8 +59,8 @@ export default function Profile({ session }) {
         username,
         goal_1,
         goal_2,
-        goal_3,
         weight,
+        weight_goal,
         updated_at: new Date(),
       };
 
@@ -90,6 +91,7 @@ export default function Profile({ session }) {
       <section>
         <label htmlFor="username">Name </label>
         <input 
+          required
           id="username"
           type="text"
           value={username || ""}
@@ -118,16 +120,6 @@ export default function Profile({ session }) {
       </section>
 
       <section>
-        <label htmlFor="goal_3">Other Goals </label>
-        <input
-          id="goal_3"
-          type="goal_3"
-          value={goal_3 || ""}
-          onChange={(e) => setGoal3(e.target.value)}
-        />
-      </section>
-
-      <section>
         <label htmlFor="weight">Weight </label>
         <input
           id="weight"
@@ -137,9 +129,19 @@ export default function Profile({ session }) {
         />
       </section>
 
+      <section>
+        <label htmlFor="weight_goal">Weight goal </label>
+        <input
+          id="weight_goal"
+          type="weight_goal"
+          value={weight_goal || ""}
+          onChange={(e) => setWeightGoal(e.target.value)}
+        />
+      </section>
+
         <button
           className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24'
-          onClick={() => updateProfile({ username, goal_1, goal_2, goal_3, weight })}
+          onClick={() => updateProfile({ username, goal_1, goal_2, weight, weight_goal })}
           disabled={loading}
         >
           {loading ? "Loading ..." : "Update"}
