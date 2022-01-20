@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 import CalenderList from "../../views/Calender/CalenderList";
 import { useWorkout } from "../../context/WorkoutContext";
 
-
 export default function CalendarHome() {
   const [date, setDate] = useState(new Date());
-  const {workouts} = useWorkout();
+  const { workouts } = useWorkout();
   const selectedDate = moment(date).format("YYYY-MM-DD")
 
   const handleData = (e) => {
@@ -30,6 +29,7 @@ export default function CalendarHome() {
           Adjust Your Day.
         </button>
       </Link>
+      {console.log(workouts)}
     </>
   );
 }
