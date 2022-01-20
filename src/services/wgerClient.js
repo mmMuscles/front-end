@@ -1,5 +1,5 @@
-export const getWorkouts = async () => {
-    const response = await fetch('https://wger.de/api/v2/exerciseinfo?language=2&limit=50')
+export const getWorkouts = async (offset) => {
+    const response = await fetch(`https://wger.de/api/v2/exerciseinfo?language=2&limit=10&offset=${offset}`)
     const data = await response.json()
     return data.results.map(workout => workoutMunger(workout))
 }
@@ -11,8 +11,6 @@ export const workoutById = async (id) => {
     return workoutMunger(data);
 
 }
-
-
 
 
 

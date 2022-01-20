@@ -37,7 +37,7 @@ export async function signUpUser(email, password) {
       .from('day')
       .select('workouts')
       .match({
-              date: currentDate, 
+              date: currentDate,
               user_id: id,
             })
       console.log(request.data)
@@ -45,4 +45,20 @@ export async function signUpUser(email, password) {
       catch {
         return []
         }
+  }
+
+  export const deleteWorkout = async (workoutId, user_id, date) => {
+    console.log(workoutId, user_id, date)
+    try{
+      const request = await supabase.from('day')
+    .delete()
+    .match({ 'workouts': JSON.stringify(workoutId), user_id, date })
+    .execute();
+    console.log(request)
+    return request.data;
+
+    } catch{
+      console.log('oh nooo')
+    }
+
   }
