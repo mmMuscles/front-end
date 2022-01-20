@@ -32,10 +32,18 @@ export async function signUpUser(email, password) {
     return request;
   }
 
-  export async function addWorkouts({ workout_name, workout_description, workout_category, workout_id  }) {
-    const request = await supabase.from('workouts').insert([{ workout_name, workout_description, workout_category, workout_id  }]);
-    return request;
+
+
+
+  export const getWorkoutArray = async (currentDate, id) => {
+      const request = await supabase.from('day').select('workouts').eq('date', currentDate)
+      console.log(currentDate)
+
+      console.log(request)
+      return request;
+
   }
-
-
-
+  // export async function addWorkouts({ workout_name, workout_description, workout_category, workout_id  }) {
+  //   const request = await supabase.from('workouts').insert([{ workout_name, workout_description, workout_category, workout_id  }]);
+  //   return request;
+  // }
