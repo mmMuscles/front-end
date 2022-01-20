@@ -4,6 +4,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import CalenderList from "../../views/Calender/CalenderList";
 import { useWorkout } from "../../context/WorkoutContext";
+import "./CalendarHome.css";
 
 export default function CalendarHome() {
   const [date, setDate] = useState(new Date());
@@ -15,8 +16,9 @@ export default function CalendarHome() {
   };
 
   return (
-    <>
+    <main className='date-day'>
       <Calendar value={date} onChange={handleData} />
+      <section>
       Workout for <b>{selectedDate}</b>
       <p>Today's focus section is: {<CalenderList />}</p>
       {!workouts ? (
@@ -47,6 +49,7 @@ export default function CalendarHome() {
           </button>
         </Link>
       )}
-    </>
+      </section>
+    </main>
   );
 }
