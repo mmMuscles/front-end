@@ -32,30 +32,6 @@ export async function signUpUser(email, password) {
     return request.data;
   }
 
-<<<<<<< HEAD
-  export const deleteWorkout = async (id) => {
-    const request = await supabase.from('day')
-    .delete()
-    .match({ workouts: id })
-    .execute();
-
-    return request.data;
-  }
-
-  export async function addAdditionalWorkout({  user_id, date, workouts, workout_id })
-  {
-    const request = await supabase.from('day').update([...workouts, workout_id], {
-      returning: "minimal",})
-      .match({
-      date: date,
-      user_id: user_id,
-    })
-    console.log(request.data)
-    return request.data;
-  }
-  
-=======
->>>>>>> b7966626a001b7fa66cab40372d85a61d28deeaf
   export const getWorkoutArray = async (currentDate, id) => {
       try { const request = await supabase
       .from('day')
