@@ -10,11 +10,11 @@ import  {WorkoutProvider} from './context/WorkoutContext'
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-    <WorkoutProvider>
-      <Router>
-       <App />
-      </Router>
-      </WorkoutProvider>
+        <WorkoutProvider>
+          <Router>
+            <App />
+          </Router>
+        </WorkoutProvider>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
