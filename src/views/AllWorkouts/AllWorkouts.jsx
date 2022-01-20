@@ -18,7 +18,7 @@ export default function AllWorkouts() {
     const date = location.search.split('=')[1]
     const {user} = useUser()
 
-    console.log(location)
+    console.log(date)
     useEffect(() => {
 
         const getAllWorkouts = async () => {
@@ -37,28 +37,19 @@ export default function AllWorkouts() {
 
     const handleAdd = async (workout) => {
 
-
-
-
         //if workout array in table... add workout.id to array ...start new array with workout.id
 
         await addWorkout({ user_id: user.id,  theme: workout.category, workouts: [workout.id], date: date})
         //munge data
-
-
         // await addWorkouts({ workout_name: workout.name, workout_description: workout.description, workout_category: workout.category, workout_id: workout.id })
-
-
         // setWorkouts((prevState) => [...prevState, workout])
 
     }
 
-
-
     return (
         <div>
 
-        <Link to='/calendar'>Back To Day</Link>
+        <Link to='/calendar?date='>Back To Day</Link>
 
         {/* <select className="dropdown">
         {exercises.category.map((theme) => {
@@ -69,9 +60,6 @@ export default function AllWorkouts() {
           );
         })}
       </select> */}
-
-
-
 
             {isLoading ? <h1 className='text-xl font-bold'>Loading...</h1> :
             <ul>
