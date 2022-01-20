@@ -56,8 +56,9 @@ export default function AllWorkouts() {
        console.log(checkDupes,simpleArray, workout.id,)
       checkDupes
       ? console.log('workout already added for day')
-      :  await addWorkout(user.id, date, workout.id)
-
+      :  await addWorkout(user.id, date, workout.id) &&
+        setWorkouts((prevState)=> [...prevState, workout.id]); 
+        
 
     }
 
