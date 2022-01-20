@@ -46,3 +46,19 @@ export async function signUpUser(email, password) {
         return []
         }
   }
+
+  export const deleteWorkout = async (workoutId, user_id, date) => {
+    console.log(workoutId, user_id, date)
+    try{
+      const request = await supabase.from('day')
+    .delete()
+    .match({ 'workouts': JSON.stringify(workoutId), user_id, date })
+    .execute();
+    console.log(request)
+    return request.data;
+
+    } catch{
+      console.log('oh nooo')
+    }
+
+  }

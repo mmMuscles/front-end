@@ -14,7 +14,6 @@ export default function AllWorkouts() {
 
     const [exercises, setExercises] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [added, setAdded] = useState(false)
     const { workouts, setWorkouts } = useWorkout();
     const location = useLocation();
     const date = location.search.split('=')[1]
@@ -38,11 +37,17 @@ export default function AllWorkouts() {
     const handleAdd = async (workout) => {
        await addWorkout({ user_id: user.id, workouts: JSON.stringify([workout.id]), date: date})
         setWorkouts((prevState) => [...prevState, workout.id])
+
     }
 
     const handleRemove = async (id) => {
-        await deleteWorkout(id)
-        setAdded(false)
+        const confirmDelete = window.confirm('Would you like to remove workout from list?')
+        if (confirmDelete){
+            await deleteWorkout(id, user.id, date)
+            const arrayAfterDelete = await getWorkoutArray()
+            setWorkouts(arrayAfterDelete)
+        }
+
     }
 
     return (
@@ -54,10 +59,9 @@ export default function AllWorkouts() {
 
             <ul>
             {exercises.map((workout) => <Card> <li key={workout.id}>
-                <Workout name={workout.name} description={workout.description} category={workout.category}/>{workouts.includes(workout.id) ? <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => handleRemove()}>Remove</button> : <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => handleAdd(workout)}>Add</button>}
+                <Workout name={workout.name} description={workout.description} category={workout.category}/>{workouts.includes(workout.id) ? <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => handleRemove(workout.id)}>Remove</button> : <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => handleAdd(workout)}>Add</button>}
             </li></Card>)}</ul>
             }
         </div>
     )
 }
-// onClick={() => handleAdd(workout)}
