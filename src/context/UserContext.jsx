@@ -1,13 +1,18 @@
 import { createContext, useContext, useMemo, useState } from 'react';
-import { getUser } from '../services/supabaseClient';
-
+import { supabase } from '../services/supabaseClient';
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const currentUser = getUser();
+
+  // const [session, setSession] = useState(null)
+  // const currentUser = getUser();
+  const session = supabase.auth.session()
+
   const [user, setUser] = useState(
-    currentUser ? { id: currentUser.id, email: currentUser.email } : {}
+    session ? { id: session.user.id, email: session.user.email } : {}
   );
+  console.log(session)
+
 
   const value = useMemo(() => ({ user, setUser }), [user]);
 
