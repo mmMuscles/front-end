@@ -29,7 +29,7 @@ export default function CalendarHome() {
           Adjust Your Day.
         </button>
       </Link>
-      {console.log(workouts)}
+      
     </>
   );
 }
