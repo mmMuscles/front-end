@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { getWorkouts } from '../../services/wgerClient'
 import Workout from '../../components/Workout'
-import { addWorkout } from '../../services/supabaseClient'
 import { useWorkout } from '../../context/WorkoutContext'
 import { Link } from 'react-router-dom'
 import { useUser } from '../../context/UserContext'
-import { getWorkoutArray } from '../../services/supabaseClient'
+import { addWorkout, getWorkoutArray } from '../../services/supabaseClient'
 
 import { useLocation } from 'react-router-dom'
+import { mungeWorkouts } from '../../utils/utils'
 
 export default function AllWorkouts() {
 
@@ -32,10 +32,17 @@ export default function AllWorkouts() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date])
-
+    
     const handleAdd = async (workout) => {        
-       await addWorkout({ user_id: user.id, workouts: JSON.stringify([workout.id]), date: date})
-        setWorkouts((prevState) => [...prevState, workout.id])
+      const dayWorkouts = await getWorkoutArray(date, user.id)
+      const simpleArray = dayWorkouts.map((object) => object.workouts)
+       const checkDupes = mungeWorkouts(simpleArray, JSON.stringify(workout.id));
+       console.log(checkDupes,simpleArray, workout.id,)
+      checkDupes
+      ? console.log('workout already added for day')
+      :  await addWorkout(user.id, date, workout.id)
+
+        
     }
 
     return (
