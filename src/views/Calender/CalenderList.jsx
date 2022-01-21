@@ -1,4 +1,5 @@
 import React from "react";
+import './CalendarList.css'
 
 const themeList = [
   "Rest",
@@ -12,9 +13,7 @@ const themeList = [
 ];
 export default function CalenderList() {
   return (
-    <>
-    
-      <select className="dropdown">
+      <select className="bg-none bg-transparent text-yellow-500 font-bold">
         {themeList.map((theme) => {
           return (
             <option key={theme} value={theme}>
@@ -23,6 +22,5 @@ export default function CalenderList() {
           );
         })}
       </select>
-    </>
   );
 }
