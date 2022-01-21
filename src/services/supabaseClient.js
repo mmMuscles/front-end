@@ -26,8 +26,8 @@ export async function signUpUser(email, password) {
     return alert('You have logged out');
   }
 
-  export async function addWorkout( theme, user_id, date, workouts ) {
-    const request = await supabase.from('day').insert({theme, user_id, date, workouts  });
+  export async function addWorkout( user_id, date, workouts ) {
+    const request = await supabase.from('day').insert({ user_id, date, workouts  });
     return request.data;
   }
 
@@ -48,11 +48,11 @@ export async function signUpUser(email, password) {
   export const deleteWorkout = async (workoutId, user_id, date) => {
     
     try{
-       await supabase.from('day')
+      const request = await supabase.from('day')
     .delete()
     .match({ 'workouts': workoutId, 'user_id': user_id, 'date': date });
     // .execute();
-    
+    console.log(request)
     // return request.data.workouts;
 
     } catch{
