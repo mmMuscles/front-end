@@ -62,7 +62,7 @@ export async function signUpUser(email, password) {
 
   export const deleteWorkout = async (workoutId, user_id, date) => {
     try{
-      const request = await supabase.from('day')
+       await supabase.from('day')
     .delete()
     .match({ 'workouts': workoutId, 'user_id': user_id, 'date': date });
     

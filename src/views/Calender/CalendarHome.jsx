@@ -45,12 +45,11 @@ export default function CalendarHome() {
     setDate(e);
   };
 
-
   return (
     <main className='date-day bg-gray-800'>
       <Calendar showNavigation={false} className='calendar-picker mt-36 h-64 rounded-md' value={date} onChange={handleData} />
       <section className='text-white mt-36 mb-9 text-2xl'>
-      {/* My workout for <b>{selectedDate}</b> */}
+      
       <p>Today I'm going to focus on {<CalenderList todaysTheme={todaysTheme} handleChange={handleChange} selectedDate={selectedDate} />}</p>
       {!renderThese.length ? (
         <Link to={`/allworkouts?date=${selectedDate}&${theme}`}>
