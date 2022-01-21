@@ -59,8 +59,8 @@ export default function CalendarHome() {
           </button>
         </Link>
       )}
-      {!renderThese ? (
-        <p>'I have no workouts today.'</p>
+      {!renderThese.length ? (
+        <p>I have no workouts today.</p>
       ) : (
         <div>
           {" "}
