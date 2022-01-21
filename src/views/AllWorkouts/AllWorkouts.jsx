@@ -27,7 +27,8 @@ export default function AllWorkouts() {
             const allWorkouts = await getWorkouts(offset)
             setExercises(allWorkouts)
             const getArray = await getWorkoutArray(date, user.id)
-            setWorkouts(getArray);
+            const getArray2 = getArray.map((object) =>+object.workouts)
+            setWorkouts(getArray2);
             setIsLoading(false)
 
         }
@@ -52,7 +53,6 @@ export default function AllWorkouts() {
       const dayWorkouts = await getWorkoutArray(date, user.id)
       const simpleArray = dayWorkouts.map((object) =>+object.workouts)
        const checkDupes = mungeWorkouts(simpleArray, workout.id);
-       console.log(checkDupes,simpleArray, workout.id,)
     //    const workObj = {{workout.id}: workout}
       checkDupes
       ? console.log('workout already added for day')
