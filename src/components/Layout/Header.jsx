@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useUser } from '../../context/UserContext'
 import { logOutUser } from '../../services/supabaseClient';
 import './Header.css'
@@ -15,11 +15,11 @@ export default function Header() {
 
     return (
         <header className='text-slate-400 font-bold items-center justify-items-center'>
-            <div hidden><Link to='/' className='' >Home</Link></div>
-            <div><Link to='/profile' className=''>profile</Link></div>
+            {/* <div hidden><Link to='/' className='uppercase' >Home</Link></div> */}
+            <div><NavLink to='/profile' className='uppercase'>profile</NavLink></div>
             {profile.username 
-            ? <div><Link to='/calendar' className=''>calendar</Link></div>
-            : <div>calendar</div>
+            ? <div><NavLink to='/calendar' className='uppercase'>calendar</NavLink></div>
+            : <div className='uppercase'>calendar</div>
             }
             
         <div>

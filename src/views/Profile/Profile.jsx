@@ -144,7 +144,7 @@ export default function Profile() {
         </section>
 
         <button
-          className="hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24"
+          className="hover:bg-blue-700 text-white font-bold py-1 px-4 ml-96 rounded w-24"
           disabled={loading}
         >
           {loading ? "updating" : "Update"}

@@ -22,6 +22,8 @@
     min-width: 200px;
     font-weight: 700;
     text-transform: uppercase;
+    text-align: right;
+    margin-right: 1rem;
 }
 
 .profile-form input {

@@ -24,13 +24,13 @@ export default function CalendarHome() {
       <p>Today I'm going to focus on {<CalenderList />}</p>
       {!workouts ? (
         <Link to={`/allworkouts?date=${selectedDate}`}>
-          <button className="bg-gray-600 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
+          <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
             add Workouts
           </button>
         </Link>
       ) : (
         <Link to={`/allworkouts?date=${selectedDate}`}>
-          <button className="bg-gray-600 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
+          <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
             add workouts
           </button>
         </Link>
