@@ -8,6 +8,6 @@ header > main {
     flex-direction: row;
 }
 
-* {
-    /* border: 1px solid hotpink; */
-}
+.active{
+    color:orange;
+  }
