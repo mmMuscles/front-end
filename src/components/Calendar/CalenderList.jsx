@@ -1,5 +1,4 @@
 import React from "react";
-import './CalendarList.css'
 
 const themeList = [
   "Rest",
