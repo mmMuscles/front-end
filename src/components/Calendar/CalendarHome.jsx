@@ -9,7 +9,7 @@ export default function CalendarHome() {
   const [date, setDate] = useState(new Date());
   const { workouts } = useWorkout();
   const selectedDate = moment(date).format("YYYY-MM-DD");
-
+  
   const handleData = (e) => {
     setDate(e);
   };

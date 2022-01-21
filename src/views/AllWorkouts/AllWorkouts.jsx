@@ -36,8 +36,6 @@ export default function AllWorkouts() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date, offset])
 
-
-
     const handleRemove = async (id) => {
         const confirmDelete = window.confirm('Would you like to remove workout from list?')
         if (confirmDelete){
@@ -47,19 +45,16 @@ export default function AllWorkouts() {
         }
     }
 
-
-
     const handleAdd = async (workout) => {
       const dayWorkouts = await getWorkoutArray(date, user.id)
       const simpleArray = dayWorkouts.map((object) => object.workouts)
        const checkDupes = mungeWorkouts(simpleArray, JSON.stringify(workout.id));
        console.log(checkDupes,simpleArray, workout.id,)
+      
       checkDupes
       ? console.log('workout already added for day')
       :  await addWorkout(user.id, date, workout.id) &&
-        setWorkouts((prevState)=> [...prevState, workout.id]); 
-        
-
+        setWorkouts((prevState)=> [...prevState, workout]); 
     }
 
     return (

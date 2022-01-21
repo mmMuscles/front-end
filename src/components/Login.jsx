@@ -24,7 +24,6 @@ export default function Login() {
             }
           };
     
-
     return (
         <>
           {isLoading ? <h1>....Loading</h1> : null}
@@ -36,6 +35,7 @@ export default function Login() {
             className="text-black rounded-sm opacity-70 my-1 mr-6 pl-1"
             type="email"
             id='email'
+            required
             placeholder="Your email"
             value={userEmail}
             onChange={(e) => setEmail(e.target.value)}
@@ -45,6 +45,7 @@ export default function Login() {
             className="text-black rounded-sm opacity-70 my-1 pl-1"
             type="password"
             id='password'
+            required
             placeholder="Your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
