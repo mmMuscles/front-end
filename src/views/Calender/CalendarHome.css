@@ -1,12 +1,22 @@
 .date-day {
+    min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
-    gap: 5%;
+    flex-wrap: nowrap;
+    gap: 10%;
     background-image: url(../../assets/attractive-girl-working-out-in-tank-top.jpeg);
     background-size: cover;
+    background-color: black;
 }
 
 .date-day button {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.calendar-picker {
+    margin-left: 9vw;
+}
+
+/* * {
+    border: hotpink solid 1px
+} */

@@ -3,7 +3,6 @@ import Calendar from "react-calendar";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import CalenderList from "../../components/Calendar/CalenderList";
-import { useWorkout } from "../../context/WorkoutContext";
 import "./CalendarHome.css";
 import 'react-calendar/dist/Calendar.css';
 import { mungeDaily } from "../../utils/utils";
@@ -13,7 +12,6 @@ import { data } from "../../assets/data";
 
 export default function CalendarHome() {
   const [date, setDate] = useState(new Date());
-  const { workouts} = useWorkout();
   const selectedDate = moment(date).format("YYYY-MM-DD");
   const [ renderThese, setRenderThese] = useState([])
   const [ loading, setLoading ] = useState(true);
@@ -29,6 +27,7 @@ export default function CalendarHome() {
    const dailyWorkId = dailyWorkout.map((object) =>+object.workouts)
    const needRender = mungeDaily(dailyWorkId, retrievedData)
     setRenderThese(needRender)
+    console.log(needRender)
     setLoading(false)
   }
    allWorkouts();
@@ -41,39 +40,40 @@ export default function CalendarHome() {
 //  if(locationDate){ setDate(locationDate)};
 
   return (
-    <main className='date-day bg-gray-800 h-screen'>
-      <Calendar showNavigation={false} className='m-10 h-64 rounded-md' value={date} onChange={handleData} />
-      <section className='text-white mt-10 text-2xl'>
+    <main className='date-day bg-gray-800'>
+      <Calendar showNavigation={false} className='calendar-picker mt-36 h-64 rounded-md' value={date} onChange={handleData} />
+      <section className='text-white mt-36 mb-9 text-2xl'>
       {/* My workout for <b>{selectedDate}</b> */}
       <p>Today I'm going to focus on {<CalenderList selectedDate={selectedDate} />}</p>
-      {!workouts ? (
-        <Link to={`/allworkouts?date=${selectedDate}`}>
-          <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
-            add Workouts
-          </button>
-        </Link>
-      ) : (
+      {!renderThese.length ? (
         <Link to={`/allworkouts?date=${selectedDate}`}>
           <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
             add workouts
           </button>
         </Link>
-      )}
-      {!renderThese ? (
-        <p>'I have no workouts today.'</p>
       ) : (
-        <div>
-          {" "}
-           
-          I'm going to do:
+        <Link to={`/allworkouts?date=${selectedDate}`}>
+          <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
+            edit workouts
+          </button>
+        </Link>
+      )}
+      {!renderThese.length ? (
+        <p>I have no workouts today.</p>
+      ) : (
+        <>
+          <div>I'm going to do:</div>
           {loading? <h1 >.......Loading</h1> :(
             <ul>
               {renderThese.map((workout) => (
-                <li key={workout.id}>{workout.name}</li>
+                <li key={workout.id}>
+                  <button className='mt-2 text-yellow-500'>{workout.name}</button>
+                  <p className='text-sm w-1/2 leading-relaxed' dangerouslySetInnerHTML={{__html: workout.description}}></p>
+                  </li>
               ))}
             </ul>
           )}
-        </div>
+        </>
       )}
       </section>
     </main>
