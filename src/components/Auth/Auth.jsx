@@ -6,7 +6,6 @@ import Login from '../Login';
 import SignUp from '../SignUp';
 import './Auth.css'
 
-
 export default function Auth() {
   const { user, setUser } = useUser();
   const [ newUser, setNewUser ] = useState(true)
@@ -15,7 +14,6 @@ export default function Auth() {
     setNewUser(!newUser)
  }
  
-
  const handleLogOut = async () => {
     setUser({ email:'', id:''})
     await logOutUser();
