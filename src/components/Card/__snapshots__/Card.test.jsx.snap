@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Header component test renders the top nav header 1`] = `
-<div>
-  <div
-    class="card"
-  />
-</div>
-`;
