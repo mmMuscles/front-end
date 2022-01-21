@@ -32,4 +32,4 @@ jobs:
       env:
        CI: true,
        REACT_APP_SUPABASE_URL: ${{ secrets.REACT_APP_SUPABASE_URL }}
-       REACT_APP_SUPABASE_KEY: ${{ secrets.REACT_APP_SUPABASE_ANON_KEY }}
+       REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.REACT_APP_SUPABASE_ANON_KEY }}
