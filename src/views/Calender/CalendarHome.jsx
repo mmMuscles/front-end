@@ -16,11 +16,10 @@ export default function CalendarHome() {
   const [ renderThese, setRenderThese] = useState([])
   const [ loading, setLoading ] = useState(true);
   const {user} = useUser();
-  const [ theme, setTheme] = useState('');
-  const [ todaysTheme, setTodayTheme] = useState('');
+  const [ todaysTheme, setTodayTheme] = useState('Rest');
   
   const handleChange = (value) => {
-    setTheme(value)
+    setTodayTheme(value)
   }
   
   useEffect(() => {
@@ -30,7 +29,7 @@ export default function CalendarHome() {
       const dailyWorkout= await getWorkoutArray(selectedDate, user.id) 
       const getThemes = await getThemeArray(selectedDate, user.id)    
       const todayTheme = getThemes.map((object) => object.theme)
-      setTodayTheme(todayTheme[0])
+      todayTheme[0] ? setTodayTheme(todayTheme[0]) : setTodayTheme('Rest')
       
    const dailyWorkId = dailyWorkout.map((object) =>+object.workouts)
    const needRender = mungeDaily(dailyWorkId, retrievedData)
@@ -50,15 +49,15 @@ export default function CalendarHome() {
       <Calendar showNavigation={false} className='calendar-picker mt-36 h-64 rounded-md' value={date} onChange={handleData} />
       <section className='text-white mt-36 mb-9 text-2xl'>
       
-      <p>Today I'm going to focus on {<CalenderList todaysTheme={todaysTheme} handleChange={handleChange} selectedDate={selectedDate} />}</p>
+      <p>Today I'm going to focus on {<CalenderList todaysTheme={todaysTheme} handleChange={handleChange} />}</p>
       {!renderThese.length ? (
-        <Link to={`/allworkouts?date=${selectedDate}&${theme}`}>
+        <Link to={`/allworkouts?date=${selectedDate}&${todaysTheme}`}>
           <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
             add workouts
           </button>
         </Link>
       ) : (
-        <Link to={`/allworkouts?date=${selectedDate}&${theme}`}>
+        <Link to={`/allworkouts?date=${selectedDate}&${todaysTheme}`}>
           <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
             edit workouts
           </button>

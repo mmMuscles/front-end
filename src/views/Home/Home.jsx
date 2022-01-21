@@ -18,10 +18,9 @@ export default function Home() {
           </article>
         </section>
 
-        {/* <section className='m-8 p-10 row-start-2 row-span-1 col-start-3 col-span-2 flex flex-col text-white text-sm font-medium justify-center'>
-          <span>weekly view</span><img alt='week_view' src='week_view.png' width='250' />
-          <span>daily view</span><img alt='day_view' src='day_view.png' width='250'/>
-        </section> */}
+        <section className='m-8 p-10 row-start-2 row-span-1 col-start-3 col-span-2 flex flex-col text-yellow-600 text-sm font-medium justify-center'>
+          <span>daily view</span><img alt='day_view' src='workoutpage.png' width='250'/>
+        </section>
 
         <section className='m-8 row-start-3 col-start-1 col-span-4 flex justify-center'>
           <Auth/>

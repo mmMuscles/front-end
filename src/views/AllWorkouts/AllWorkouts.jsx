@@ -22,7 +22,6 @@ export default function AllWorkouts() {
     const dateY = location.search.split('=')[1]
     const date = dateY.split('&')[0]
     const theme = location.search.split('&')[1]
-    console.log(date, theme)
     
     const {user} = useUser()
 
@@ -76,9 +75,10 @@ export default function AllWorkouts() {
             {isLoading ? <h1 className='text-xl font-bold'>Loading...</h1> :
 
             <ul className='all-the-workouts'>
-            {exercises.map((workout) => <Card key={workout.id}> <li key={workout.id}>
-                <Workout name={workout.name} description={workout.description} category={workout.category}/>{workouts.includes(workout.id) ? <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleRemove(workout.id)}>Remove</button>
-                : <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleAdd(workout)}><span>Add</span><span>+</span></button>}
+            {exercises.map((workout) => <Card key={workout.id}> <li key={workout.id}> 
+            {workouts.includes(workout.id) ? <button className='bg-red-700 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleRemove(workout.id)}>Remove</button>
+                : <button className='bg-gray-400 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleAdd(workout)}><span>Add</span><span>+</span></button>}
+                <Workout name={workout.name} description={workout.description} category={workout.category}/>
             </li></Card>)}</ul>
             }
         </div>
