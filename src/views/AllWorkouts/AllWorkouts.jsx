@@ -23,7 +23,7 @@ export default function AllWorkouts() {
     const date = dateY.split('&')[0]
     const theme = location.search.split('&')[1]
     console.log(date, theme)
-    
+
     const {user} = useUser()
 
     useEffect(() => {
@@ -47,17 +47,17 @@ export default function AllWorkouts() {
         if (confirmDelete){
             await deleteWorkout(id, user.id, date)
             const arrayAfterDelete = await getWorkoutArray(date, user.id)
-            
+
             const exerciseArray = arrayAfterDelete.map((object) =>+object.workouts)
-            
+
             setWorkouts(exerciseArray)
         }
     }
 
     const handleAdd = async (workout) => {
-      const dayWorkouts = await getWorkoutArray(date, user.id)
-      const simpleArray = dayWorkouts.map((object) =>+object.workouts)
-       const checkDupes = mungeWorkouts(simpleArray, workout.id);
+        const dayWorkouts = await getWorkoutArray(date, user.id)
+        const simpleArray = dayWorkouts.map((object) =>+object.workouts)
+        const checkDupes = mungeWorkouts(simpleArray, workout.id);
     //    const workObj = {{workout.id}: workout}
       checkDupes
       ? console.log('workout already added for day')
@@ -72,12 +72,14 @@ export default function AllWorkouts() {
         <Link to={`/calendar?date=${date}`}><button className='bg-yellow-700 hover:bg-yellow-700 text-white font-bold py-2 px-4 m-3 rounded'>Back To Day</button></Link>
 
             {offset > 0 ? <button  onClick={() => setOffset(offset - 10)} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-3 rounded'>Prev Page</button> : null}
+
             {exercises.length >= 10 ? <button onClick={() => setOffset(offset + 10)} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-3 rounded'>Next Page</button> : null}
             {isLoading ? <h1 className='text-xl font-bold'>Loading...</h1> :
 
             <ul className='all-the-workouts'>
             {exercises.map((workout) => <Card key={workout.id}> <li key={workout.id}>
                 <Workout name={workout.name} description={workout.description} category={workout.category}/>{workouts.includes(workout.id) ? <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleRemove(workout.id)}>Remove</button>
+
                 : <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleAdd(workout)}><span>Add</span><span>+</span></button>}
             </li></Card>)}</ul>
             }
