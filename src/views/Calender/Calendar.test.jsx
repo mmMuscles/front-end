@@ -1,10 +1,7 @@
-import { rest } from "msw";
-import { setUpServer } from "msw/node";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter, Route, Switch } from "react-router-dom/";
 import CalendarHome from "./CalendarHome";
 import { UserProvider } from "../../context/UserContext";
-import CalenderList from "../../components/Calendar/CalenderList";
 
 describe("render test", () => {
   it("testing Calendar", () => {
