@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
-import { signUpUser } from '../services/supabaseClient';
+import { useUser } from '../../context/UserContext';
+import { signUpUser } from '../../services/supabaseClient';
 
 export default function SignUp() {
     const [userEmail, setEmail] = useState('');
