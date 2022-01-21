@@ -6,7 +6,6 @@ import CalenderList from "../../components/Calendar/CalenderList";
 import { useWorkout } from "../../context/WorkoutContext";
 import "./CalendarHome.css";
 import 'react-calendar/dist/Calendar.css';
-import { useLocation } from "react-router-dom";
 import { mungeDaily } from "../../utils/utils";
 import { getWorkoutArray } from "../../services/supabaseClient";
 import { useUser } from "../../context/UserContext";
@@ -16,8 +15,6 @@ export default function CalendarHome() {
   const [date, setDate] = useState(new Date());
   const { workouts} = useWorkout();
   const selectedDate = moment(date).format("YYYY-MM-DD");
-  const location = useLocation();
-  const locationDate = location.search.split('=')[1];
   const [ renderThese, setRenderThese] = useState([])
   const [ loading, setLoading ] = useState(true);
   const {user} = useUser()
