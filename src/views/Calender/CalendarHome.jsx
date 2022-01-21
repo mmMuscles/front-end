@@ -29,7 +29,7 @@ export default function CalendarHome() {
       const dailyWorkout = await getWorkoutArray(selectedDate, user.id);
       const getThemes = await getThemeArray(selectedDate, user.id);
       const todayTheme = getThemes.map((object) => object.theme);
-      todayTheme[0] ? setTodayTheme(todayTheme[0]) : setTodayTheme("Rest");
+      todayTheme[0] ? setTodayTheme(todayTheme.at(-1)) : setTodayTheme("Rest");
 
       const dailyWorkId = dailyWorkout.map((object) => +object.workouts);
       const needRender = mungeDaily(dailyWorkId, retrievedData);
