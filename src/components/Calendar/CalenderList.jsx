@@ -11,9 +11,12 @@ const themeList = [
   "Yoga",
   "Stretching",
 ];
-export default function CalenderList() {
+export default function CalenderList( {selectedDate} ) {
+  const handleChange = () => {
+    
+  }
   return (
-      <select className="bg-none bg-transparent text-yellow-500 font-bold">
+      <select onChange={handleChange}className="bg-none bg-transparent text-yellow-500 font-bold">
         {themeList.map((theme) => {
           return (
             <option key={theme} value={theme}>
