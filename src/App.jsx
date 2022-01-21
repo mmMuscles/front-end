@@ -2,7 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./views/Home/Home";
 import AllWorkouts from "./views/AllWorkouts/AllWorkouts";
-import CalendarHome from "./components/Calendar/CalendarHome";
+import CalendarHome from "./views/Calender/CalendarHome";
 import Profile from "./views/Profile/Profile";
 import Header from "./components/Layout/Header";
 import PrivateRoute from "./components/PrivateRoute";

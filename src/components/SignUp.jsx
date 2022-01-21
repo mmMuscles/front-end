@@ -33,6 +33,7 @@ export default function SignUp() {
           <input
             className="text-black rounded-sm opacity-70 my-1 mr-6 pl-1"
             type="email"
+            required
             id='email'
             placeholder="Your email"
             value={userEmail}
@@ -42,6 +43,7 @@ export default function SignUp() {
            <input
             className="text-black rounded-sm opacity-70 my-1 pl-1"
             type="password"
+            required
             id='password'
             placeholder="Your password"
             value={password}

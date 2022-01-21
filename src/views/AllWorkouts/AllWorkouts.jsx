@@ -15,7 +15,6 @@ export default function AllWorkouts() {
     const [exercises, setExercises] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { workouts, setWorkouts } = useWorkout();
-    // const {todaysWorkout} = workouts;
     const [offset, setOffset] = useState(0)
     const location = useLocation();
     const date = location.search.split('=')[1]
@@ -27,7 +26,8 @@ export default function AllWorkouts() {
             const allWorkouts = await getWorkouts(offset)
             setExercises(allWorkouts)
             const getArray = await getWorkoutArray(date, user.id)
-            setWorkouts(getArray);
+            const getArray2 = getArray.map((object) =>+object.workouts)
+            setWorkouts(getArray2);
             setIsLoading(false)
 
         }
@@ -41,24 +41,21 @@ export default function AllWorkouts() {
         if (confirmDelete){
             await deleteWorkout(id, user.id, date)
             const arrayAfterDelete = await getWorkoutArray(date, user.id)
-            console.log(arrayAfterDelete)
+            
             const exerciseArray = arrayAfterDelete.map((object) =>+object.workouts)
-            console.log(exerciseArray, 'hello')
+            
             setWorkouts(exerciseArray)
         }
     }
-
-
 
     const handleAdd = async (workout) => {
       const dayWorkouts = await getWorkoutArray(date, user.id)
       const simpleArray = dayWorkouts.map((object) =>+object.workouts)
        const checkDupes = mungeWorkouts(simpleArray, workout.id);
-       console.log(checkDupes,simpleArray, workout.id,)
     //    const workObj = {{workout.id}: workout}
       checkDupes
       ? console.log('workout already added for day')
-      :  await addWorkout(user.id, date, workout.id) &&
+      :  await addWorkout( user.id, date, workout.id) &&
         setWorkouts((prevState)=> [...prevState, workout.id]);
 
 
