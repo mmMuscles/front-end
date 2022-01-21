@@ -29,23 +29,23 @@ export default function CalendarHome() {
         <p>Today I'm going to focus on {<CalenderList />}</p>
         {!workouts ? (
           <Link to={`/allworkouts?date=${selectedDate}`}>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Add Workouts
+            <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
+              add Workouts
             </button>
           </Link>
         ) : (
           <Link to={`/allworkouts?date=${selectedDate}`}>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Add more workouts
+            <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
+              add workouts
             </button>
           </Link>
         )}
         {!workouts ? (
-          <p>'You have no workouts scheduled for today!'</p>
+          <p>'I have no workouts today.'</p>
         ) : (
           <div>
             {" "}
-            Your daily workouts consist of
+            I'm going to do:
             {workouts && (
               <ul>
                 {workouts.map((workout) => (
