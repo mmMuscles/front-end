@@ -18,7 +18,12 @@ export default function AllWorkouts() {
     const { workouts, setWorkouts } = useWorkout();
     const [offset, setOffset] = useState(0)
     const location = useLocation();
-    const date = location.search.split('=')[1]
+    // const date = location.search.split('=')[1]
+    const dateY = location.search.split('=')[1]
+    const date = dateY.split('&')[0]
+    const theme = location.search.split('&')[1]
+    console.log(date, theme)
+    
     const {user} = useUser()
 
     useEffect(() => {
@@ -56,7 +61,7 @@ export default function AllWorkouts() {
     //    const workObj = {{workout.id}: workout}
       checkDupes
       ? console.log('workout already added for day')
-      :  await addWorkout( user.id, date, workout.id) &&
+      :  await addWorkout( theme, user.id, date, workout.id) &&
         setWorkouts((prevState)=> [...prevState, workout.id]);
 
 
