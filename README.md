@@ -1,3 +1,8 @@
+Our app was made to help people schedule their works by day, using a calendar feature and a database of workouts to choose from.
+Our team members are Karl Sigel, Julius Franklin, Elijah Prosperie, and Dano Gilles.
+Our supabase is at https://app.supabase.io/project/psdgtyeifanapnczvbzn and has tables for days, profiles, workouts and favorite workouts(not implemented yet). The workout api that we got information from was https://wger.de/en/software/api. The images on the sire are from public domain. 
+Our planning board is at: https://miro.com/app/board/uXjVOV9H5s0=/?invite_link_id=78122020448
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
