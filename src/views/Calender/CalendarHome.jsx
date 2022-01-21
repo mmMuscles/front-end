@@ -22,7 +22,6 @@ export default function CalendarHome() {
 
   useEffect(() => {
     setLoading(true)
-    
    const allWorkouts = async () => { 
    const retrievedData= data;
    const dailyWorkout= await getWorkoutArray(selectedDate, user.id)     
@@ -46,7 +45,8 @@ export default function CalendarHome() {
       <section className='text-white mt-10 text-2xl'>
       {/* My workout for <b>{selectedDate}</b> */}
       <p>Today I'm going to focus on {<CalenderList selectedDate={selectedDate} />}</p>
-      {!workouts ? (
+     {console.log(renderThese)}
+      {!renderThese.length ? (
         <Link to={`/allworkouts?date=${selectedDate}`}>
           <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
             add Workouts
@@ -55,7 +55,7 @@ export default function CalendarHome() {
       ) : (
         <Link to={`/allworkouts?date=${selectedDate}`}>
           <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
-            add workouts
+            edit workouts
           </button>
         </Link>
       )}
@@ -64,7 +64,6 @@ export default function CalendarHome() {
       ) : (
         <div>
           {" "}
-           
           I'm going to do:
           {loading? <h1 >.......Loading</h1> :(
             <ul>
