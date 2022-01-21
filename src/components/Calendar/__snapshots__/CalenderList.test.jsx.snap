@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component test renders the top nav header 1`] = `
+<div>
+  <select
+    class="bg-none bg-transparent text-yellow-500 font-bold"
+  >
+    <option
+      value="Rest"
+    >
+      Rest
+    </option>
+    <option
+      value="Abs"
+    >
+      Abs
+    </option>
+    <option
+      value="Arms"
+    >
+      Arms
+    </option>
+    <option
+      value="Back"
+    >
+      Back
+    </option>
+    <option
+      value="Calves"
+    >
+      Calves
+    </option>
+    <option
+      value="Chest"
+    >
+      Chest
+    </option>
+    <option
+      value="Legs"
+    >
+      Legs
+    </option>
+    <option
+      value="Shoulders"
+    >
+      Shoulders
+    </option>
+    <option
+      value="Yoga"
+    >
+      Yoga
+    </option>
+    <option
+      value="Stretch"
+    >
+      Stretch
+    </option>
+  </select>
+</div>
+`;

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component test renders the top nav header 1`] = `
+<div>
+  <header
+    class="text-slate-400 font-bold items-center justify-items-center"
+  >
+    <div>
+      <a
+        class="uppercase"
+        href="/profile"
+      >
+        profile
+      </a>
+    </div>
+    <div
+      class="uppercase"
+    >
+      calendar
+    </div>
+    <div>
+      <main>
+        <h1>
+          Hello, Friend
+        </h1>
+      </main>
+    </div>
+  </header>
+</div>
+`;

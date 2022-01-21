@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useUser } from "../../context/UserContext";
-import { logOutUser } from "../../services/supabaseClient";
-import Login from "../Login";
-import SignUp from "../SignUp";
-import "./Auth.css";
+
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useUser } from '../../context/UserContext';
+import { logOutUser } from '../../services/supabaseClient';
+import Login from './Login';
+import SignUp from './SignUp';
+import './Auth.css'
 
 export default function Auth() {
   const { user, setUser } = useUser();
