@@ -25,7 +25,7 @@ export default function Header() {
         <div>
          {email
           ? <main className='flex items-center'>
-              <h1 className='text-gray-600'>Hello, {profile.username}</h1>
+              <h1 className='text-gray-600'>Hello {profile.username}</h1>
                 <button className='bg-gray-300 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-6 rounded w-24'
                 onClick={handleLogOut} >Log out</button>
           </main>

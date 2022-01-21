@@ -1,0 +1,12 @@
+.date-day {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+    background-image: url(../../assets/attractive-girl-working-out-in-tank-top.jpeg);
+    background-size: cover;
+}
+
+.date-day button {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
