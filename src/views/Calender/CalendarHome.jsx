@@ -17,7 +17,6 @@ export default function CalendarHome() {
   const [ loading, setLoading ] = useState(true);
   const {user} = useUser()
   
-
   useEffect(() => {
     setLoading(true)
     
@@ -27,7 +26,6 @@ export default function CalendarHome() {
    const dailyWorkId = dailyWorkout.map((object) =>+object.workouts)
    const needRender = mungeDaily(dailyWorkId, retrievedData)
     setRenderThese(needRender)
-    console.log(needRender)
     setLoading(false)
   }
    allWorkouts();
