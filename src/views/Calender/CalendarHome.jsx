@@ -3,7 +3,6 @@ import Calendar from "react-calendar";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import CalenderList from "../../components/Calendar/CalenderList";
-import { useWorkout } from "../../context/WorkoutContext";
 import "./CalendarHome.css";
 import 'react-calendar/dist/Calendar.css';
 import { mungeDaily } from "../../utils/utils";
