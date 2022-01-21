@@ -52,13 +52,13 @@ export async function signUpUser(email, password) {
     try{
       const request = await supabase.from('day')
     .delete()
-    .match({ 'workouts': JSON.stringify(workoutId), user_id, date })
-    .execute();
+    .match({ 'workouts': workoutId, 'user_id': user_id, 'date': date });
+    // .execute();
     console.log(request)
-    return request.data;
+    // return request.data.workouts;
 
     } catch{
-      console.log('oh nooo')
+      console.log('error')
     }
 
   }
