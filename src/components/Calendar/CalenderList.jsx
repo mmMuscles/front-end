@@ -1,25 +1,19 @@
 import React from "react";
-import './CalendarList.css'
 
 const themeList = [
   "Rest",
-  "Legs",
-  "Arms",
-  "Cardio",
-  "Core",
-  "Strength",
+  'Abs', 'Arms', 'Back', 'Calves', 'Chest', 'Legs', 'Shoulders',
   "Yoga",
-  "Stretching",
+  "Stretch",
 ];
-export default function CalenderList( {selectedDate} ) {
-  const handleChange = () => {
-    
-  }
+export default function CalenderList( { handleChange, todaysTheme} ) {
+
+  
   return (
-      <select onChange={handleChange}className="bg-none bg-transparent text-yellow-500 font-bold">
+      <select value={todaysTheme} onChange={(e) => handleChange(e.target.value)} className="bg-none bg-transparent text-yellow-500 font-bold">
         {themeList.map((theme) => {
           return (
-            <option key={theme} value={theme}>
+             <option key={theme} value={theme}>
               {theme}
             </option>
           );
