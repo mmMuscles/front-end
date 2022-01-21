@@ -1,0 +1,4 @@
+.all-the-workouts {
+    display: flex;
+    flex-wrap: wrap;
+}
