@@ -28,7 +28,10 @@ export default function CalendarHome() {
           {workouts && (
             <ul>
               {workouts.map((workout) => (
-                <li>{workout.name}</li>
+                <li>
+                  {workout.name}
+                  {workout.description}
+                </li>
               ))}
             </ul>
           )}
