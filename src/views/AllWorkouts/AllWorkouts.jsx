@@ -22,7 +22,6 @@ export default function AllWorkouts() {
     const dateY = location.search.split('=')[1]
     const date = dateY.split('&')[0]
     const theme = location.search.split('&')[1]
-    console.log(date, theme)
     
     const {user} = useUser()
 
