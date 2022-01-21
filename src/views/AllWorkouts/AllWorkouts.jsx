@@ -41,14 +41,17 @@ export default function AllWorkouts() {
         if (confirmDelete){
             await deleteWorkout(id, user.id, date)
             const arrayAfterDelete = await getWorkoutArray(date, user.id)
-            setWorkouts(arrayAfterDelete)
+            console.log(arrayAfterDelete)
+            const exerciseArray = arrayAfterDelete.map((object) =>+object.workouts)
+            console.log(exerciseArray, 'hello')
+            setWorkouts(exerciseArray)
         }
     }
 
     const handleAdd = async (workout) => {
       const dayWorkouts = await getWorkoutArray(date, user.id)
-      const simpleArray = dayWorkouts.map((object) => object.workouts)
-       const checkDupes = mungeWorkouts(simpleArray, JSON.stringify(workout.id));
+      const simpleArray = dayWorkouts.map((object) =>+object.workouts)
+       const checkDupes = mungeWorkouts(simpleArray, workout.id);
        console.log(checkDupes,simpleArray, workout.id,)
     //    const workObj = {{workout.id}: workout}
       checkDupes
