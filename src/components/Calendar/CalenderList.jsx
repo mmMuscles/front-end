@@ -9,7 +9,7 @@ const themeList = [
   "Core",
   "Strength",
   "Yoga",
-  "Stretching",
+  "Stretch",
 ];
 export default function CalenderList( {selectedDate} ) {
   const handleChange = () => {
