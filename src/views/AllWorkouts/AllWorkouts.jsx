@@ -41,9 +41,9 @@ export default function AllWorkouts() {
         if (confirmDelete){
             await deleteWorkout(id, user.id, date)
             const arrayAfterDelete = await getWorkoutArray(date, user.id)
-            console.log(arrayAfterDelete)
+            
             const exerciseArray = arrayAfterDelete.map((object) =>+object.workouts)
-            console.log(exerciseArray, 'hello')
+            
             setWorkouts(exerciseArray)
         }
     }
