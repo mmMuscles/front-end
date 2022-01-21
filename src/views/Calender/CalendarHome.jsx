@@ -6,7 +6,7 @@ import CalenderList from "../../components/Calendar/CalenderList";
 import "./CalendarHome.css";
 import 'react-calendar/dist/Calendar.css';
 import { mungeDaily } from "../../utils/utils";
-import { getWorkoutArray } from "../../services/supabaseClient";
+import { getThemeArray, getWorkoutArray } from "../../services/supabaseClient";
 import { useUser } from "../../context/UserContext";
 import { data } from "../../assets/data";
 
@@ -15,14 +15,23 @@ export default function CalendarHome() {
   const selectedDate = moment(date).format("YYYY-MM-DD");
   const [ renderThese, setRenderThese] = useState([])
   const [ loading, setLoading ] = useState(true);
-  const {user} = useUser()
+  const {user} = useUser();
+  const [ theme, setTheme] = useState('');
+  const [ todaysTheme, setTodayTheme] = useState('');
+  
+  const handleChange = (value) => {
+    setTheme(value)
+  }
   
   useEffect(() => {
     setLoading(true)
-    
-   const allWorkouts = async () => { 
-   const retrievedData= data;
-   const dailyWorkout= await getWorkoutArray(selectedDate, user.id)     
+    const allWorkouts = async () => { 
+      const retrievedData= data;
+      const dailyWorkout= await getWorkoutArray(selectedDate, user.id) 
+      const getThemes = await getThemeArray(selectedDate, user.id)    
+      const todayTheme = getThemes.map((object) => object.theme)
+      setTodayTheme(todayTheme[0])
+      
    const dailyWorkId = dailyWorkout.map((object) =>+object.workouts)
    const needRender = mungeDaily(dailyWorkId, retrievedData)
     setRenderThese(needRender)
@@ -35,22 +44,21 @@ export default function CalendarHome() {
   const handleData = (e) => {
     setDate(e);
   };
-//  if(locationDate){ setDate(locationDate)};
 
   return (
     <main className='date-day bg-gray-800'>
       <Calendar showNavigation={false} className='calendar-picker mt-36 h-64 rounded-md' value={date} onChange={handleData} />
       <section className='text-white mt-36 mb-9 text-2xl'>
-      {/* My workout for <b>{selectedDate}</b> */}
-      <p>Today I'm going to focus on {<CalenderList selectedDate={selectedDate} />}</p>
+      
+      <p>Today I'm going to focus on {<CalenderList todaysTheme={todaysTheme} handleChange={handleChange} selectedDate={selectedDate} />}</p>
       {!renderThese.length ? (
-        <Link to={`/allworkouts?date=${selectedDate}`}>
+        <Link to={`/allworkouts?date=${selectedDate}&${theme}`}>
           <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
             add workouts
           </button>
         </Link>
       ) : (
-        <Link to={`/allworkouts?date=${selectedDate}`}>
+        <Link to={`/allworkouts?date=${selectedDate}&${theme}`}>
           <button className="bg-gray-700 hover:bg-yellow-600 text-white font-bold text-sm py-2 px-4 rounded">
             edit workouts
           </button>
