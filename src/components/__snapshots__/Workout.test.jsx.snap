@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component test renders the top nav header 1`] = `
+<div>
+  <div>
+    <h1
+      class="text-2xl font-bold text-blue-500"
+    />
+    <p
+      class="mb-2 text-neutral-500"
+    >
+      <b>
+        Category:
+      </b>
+       
+    </p>
+    <p
+      class="text-sm"
+    />
+  </div>
+</div>
+`;
