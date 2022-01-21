@@ -13,7 +13,6 @@ import { data } from "../../assets/data";
 
 export default function CalendarHome() {
   const [date, setDate] = useState(new Date());
-  const { workouts} = useWorkout();
   const selectedDate = moment(date).format("YYYY-MM-DD");
   const [ renderThese, setRenderThese] = useState([])
   const [ loading, setLoading ] = useState(true);
