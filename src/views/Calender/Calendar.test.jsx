@@ -25,7 +25,7 @@ const server = setupServer(
   rest.get(
     "https://psdgtyeifanapnczvbzn.supabase.co/rest/v1/day",
     (req, res, ctx) => {
-      return res(ctx.json([{ theme: "Rest" }]));
+      return res(ctx.json([{ theme: "Abs" }]));
     }
   )
 );
@@ -50,7 +50,9 @@ describe("render test", () => {
     );
 
     await screen.findByText("Mon");
+    await screen.findByText("Abs");
 
     await screen.findByText("I have no workouts today.");
+    await screen.findByText("Arnold Shoulder Press");
   });
 });
