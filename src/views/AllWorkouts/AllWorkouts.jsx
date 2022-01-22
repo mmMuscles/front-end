@@ -57,22 +57,7 @@ export default function AllWorkouts() {
       ? console.log('workout already added for day')
       :  await addWorkout( theme, user.id, date, workout.id) &&
         setWorkouts((prevState)=> [...prevState, workout.id]);
-
-      const exerciseArray = arrayAfterDelete.map((object) => +object.workouts);
-
-      setWorkouts(exerciseArray);
     }
-  };
-
-  const handleAdd = async (workout) => {
-    const dayWorkouts = await getWorkoutArray(date, user.id);
-    const simpleArray = dayWorkouts.map((object) => +object.workouts);
-    const checkDupes = mungeWorkouts(simpleArray, workout.id);
-    checkDupes
-      ? console.log("workout already added for day")
-      : (await addWorkout(theme, user.id, date, workout.id)) &&
-        setWorkouts((prevState) => [...prevState, workout.id]);
-  };
 
   return (
     <div className="m-14">
@@ -134,3 +119,4 @@ export default function AllWorkouts() {
       )}
     </div>
   );
+}
