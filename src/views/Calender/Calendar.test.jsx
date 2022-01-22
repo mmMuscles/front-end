@@ -7,7 +7,7 @@ import { UserProvider } from "../../context/UserContext";
 import { WorkoutProvider } from "../../context/WorkoutContext";
 
 jest.mock("../../context/UserContext");
-// jest.mock("../../services/supabaseClient");
+
 const server = setupServer(
   rest.get(
     "https://psdgtyeifanapnczvbzn.supabase.co/rest/v1/day",

@@ -38,11 +38,9 @@ export default function CalendarHome() {
       setRenderThese(needRender);
       setLoading(false);
     };
-    try {
-      allWorkouts();
-    } catch {
-      console.log("hi");
-    }
+
+    allWorkouts();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate]);
 
