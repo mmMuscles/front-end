@@ -1,23 +1,56 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { MemoryRouter, Route, Switch } from "react-router-dom/";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Route } from "react-router-dom/";
 import CalendarHome from "./CalendarHome";
 import { UserProvider } from "../../context/UserContext";
+import { WorkoutProvider } from "../../context/WorkoutContext";
 
+jest.mock("../../context/UserContext");
+// jest.mock("../../services/supabaseClient");
+const server = setupServer(
+  rest.get(
+    "https://psdgtyeifanapnczvbzn.supabase.co/rest/v1/day",
+    (req, res, ctx) => {
+      return res(
+        ctx.json([
+          {
+            workouts: 227,
+          },
+        ])
+      );
+    }
+  ),
+
+  rest.get(
+    "https://psdgtyeifanapnczvbzn.supabase.co/rest/v1/day",
+    (req, res, ctx) => {
+      return res(ctx.json([{ theme: "Rest" }]));
+    }
+  )
+);
 describe("render test", () => {
-  it("testing Calendar", () => {
+  beforeAll(() => {
+    server.listen();
+  });
+  afterAll(() => {
+    server.close();
+  });
+  it("calendar test", async () => {
     render(
-      <MemoryRouter initialEntries={["/calendar"]}>
-        <UserProvider mockUser={{ id: 2, email: "heyemail@gmail.com" }}>
-          <CalendarHome />
+      <MemoryRouter initialEntries={["/calendar?date=2022-01-21"]}>
+        <UserProvider mockUser={{ id: 1, email: "email@gmail.com" }}>
+          <WorkoutProvider>
+            <Route path="/calendar">
+              <CalendarHome />
+            </Route>
+          </WorkoutProvider>
         </UserProvider>
       </MemoryRouter>
     );
 
-    screen.getByText("add workouts");
+    await screen.findByText("Mon");
 
-    const list = screen.getByLabelText("list");
-
-    fireEvent.change(list, { target: { value: "Arms" } });
-    screen.getByText("Arms");
+    await screen.findByText("I have no workouts today.");
   });
 });
