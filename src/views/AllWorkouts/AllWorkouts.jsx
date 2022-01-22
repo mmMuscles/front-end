@@ -99,7 +99,7 @@ export default function AllWorkouts() {
                     Remove
                   </button>
                 ) : (
-                  <button
+                  <button aria-label="Add+"
                     className="bg-gray-400 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom"
                     onClick={() => handleAdd(workout)}
                   >
