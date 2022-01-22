@@ -15,6 +15,7 @@ const themeList = [
 export default function CalenderList({ handleChange, todaysTheme }) {
   return (
     <select
+      aria-label="list"
       value={todaysTheme}
       onChange={(e) => handleChange(e.target.value)}
       className="bg-none bg-transparent text-yellow-500 font-bold"

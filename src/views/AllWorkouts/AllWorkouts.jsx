@@ -20,7 +20,6 @@ export default function AllWorkouts() {
   const dateY = location.search.split("=")[1];
   const date = dateY.split("&")[0];
   const theme = location.search.split("&")[1];
-
   const { user } = useUser();
 
   useEffect(() => {
@@ -35,15 +34,29 @@ export default function AllWorkouts() {
     getAllWorkouts();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date, offset]);
+    }, [date, offset])
 
-  const handleRemove = async (id) => {
-    const confirmDelete = window.confirm(
-      "Would you like to remove workout from list?"
-    );
-    if (confirmDelete) {
-      await deleteWorkout(id, user.id, date);
-      const arrayAfterDelete = await getWorkoutArray(date, user.id);
+    const handleRemove = async (id) => {
+        const confirmDelete = window.confirm('Would you like to remove workout from list?')
+        if (confirmDelete){
+            await deleteWorkout(id, user.id, date)
+            const arrayAfterDelete = await getWorkoutArray(date, user.id)
+
+            const exerciseArray = arrayAfterDelete.map((object) =>+object.workouts)
+
+            setWorkouts(exerciseArray)
+        }
+    }
+
+    const handleAdd = async (workout) => {
+        const dayWorkouts = await getWorkoutArray(date, user.id)
+        const simpleArray = dayWorkouts.map((object) =>+object.workouts)
+        const checkDupes = mungeWorkouts(simpleArray, workout.id);
+    //    const workObj = {{workout.id}: workout}
+      checkDupes
+      ? console.log('workout already added for day')
+      :  await addWorkout( theme, user.id, date, workout.id) &&
+        setWorkouts((prevState)=> [...prevState, workout.id]);
 
       const exerciseArray = arrayAfterDelete.map((object) => +object.workouts);
 
@@ -121,4 +134,3 @@ export default function AllWorkouts() {
       )}
     </div>
   );
-}

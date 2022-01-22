@@ -3,7 +3,10 @@ import { createClient } from "@supabase/supabase-js";
 // export const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 // export const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY
 
-export const supabase = createClient(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_ANON_KEY)
+export const supabase = createClient(
+  process.env.REACT_APP_SUPABASE_URL,
+  process.env.REACT_APP_SUPABASE_ANON_KEY
+);
 
 export async function signInUser(email, password) {
   const { user, error } = await supabase.auth.signIn({ email, password });
@@ -40,8 +43,8 @@ export const getWorkoutArray = async (currentDate, id) => {
       user_id: id,
     });
     return request.data;
-  } catch {
-    return [];
+  } catch (error) {
+    return error;
   }
 };
 
@@ -52,8 +55,8 @@ export const getThemeArray = async (currentDate, id) => {
       user_id: id,
     });
     return request.data;
-  } catch {
-    return [""];
+  } catch (error) {
+    return error;
   }
 };
 
