@@ -77,7 +77,7 @@ export default function AllWorkouts() {
             <ul className='all-the-workouts'>
             {exercises.map((workout) => <Card key={workout.id}> <li key={workout.id}>
             {workouts.includes(workout.id) ? <button className='bg-red-700 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleRemove(workout.id)}>Remove</button>
-                : <button className='bg-gray-400 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleAdd(workout)}><span>Add</span><span>+</span></button>}
+                : <button aria-label='Add+' className='bg-gray-400 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded object-right-bottom' onClick={() => handleAdd(workout)}><span>Add</span><span>+</span></button>}
                 <Workout name={workout.name} description={workout.description} category={workout.category}/>
             </li></Card>)}</ul>
             }
