@@ -52,7 +52,6 @@ describe("render test", () => {
     await screen.findByText("Mon");
     await screen.findByText("Abs");
 
-    await screen.findByText("I have no workouts today.");
     await screen.findByText("Arnold Shoulder Press");
   });
 });
