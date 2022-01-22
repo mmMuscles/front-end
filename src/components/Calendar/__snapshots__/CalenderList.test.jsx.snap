@@ -3,6 +3,7 @@
 exports[`Header component test renders the top nav header 1`] = `
 <div>
   <select
+    aria-label="list"
     class="bg-none bg-transparent text-yellow-500 font-bold"
   >
     <option
