@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allow user to change profile inputs 1`] = `
+<div>
+  <main
+    class="profile-back h-screen flex flex-col"
+  >
+    <form
+      class="profile-form"
+    >
+      <section>
+        <label
+          for="username"
+        >
+          Name 
+        </label>
+        <input
+          id="username"
+          required=""
+          type="text"
+          value=""
+        />
+      </section>
+      <section>
+        <label
+          for="goal_1"
+        >
+          Primary Goal 
+        </label>
+        <input
+          id="goal_1"
+          type="goal_1"
+          value=""
+        />
+      </section>
+      <section>
+        <label
+          for="goal_2"
+        >
+          Secondary Goal 
+        </label>
+        <input
+          id="goal_2"
+          type="goal_2"
+          value=""
+        />
+      </section>
+      <section>
+        <label
+          for="weight"
+        >
+          Weight 
+        </label>
+        <input
+          id="weight"
+          type="weight"
+          value=""
+        />
+      </section>
+      <section>
+        <label
+          for="weight_goal"
+        >
+          Weight goal 
+        </label>
+        <input
+          id="weight_goal"
+          type="weight_goal"
+          value=""
+        />
+      </section>
+      <button
+        class="hover:bg-blue-700 text-white font-bold py-1 px-4 ml-96 rounded w-24"
+        disabled=""
+      >
+        updating
+      </button>
+    </form>
+  </main>
+</div>
+`;
