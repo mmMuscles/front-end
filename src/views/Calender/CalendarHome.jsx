@@ -27,9 +27,7 @@ export default function CalendarHome() {
     const allWorkouts = async () => {
       const retrievedData = data;
       const dailyWorkout = await getWorkoutArray(selectedDate, user.id);
-
       const getThemes = await getThemeArray(selectedDate, user.id);
-
       const todayTheme = getThemes.map((object) => object.theme);
       todayTheme[0] ? setTodayTheme(todayTheme.at(-1)) : setTodayTheme("Rest");
 
@@ -40,9 +38,7 @@ export default function CalendarHome() {
     };
 
     allWorkouts();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedDate]);
+  }, [selectedDate, user.id]);
 
   const handleData = (e) => {
     setDate(e);
@@ -88,7 +84,7 @@ export default function CalendarHome() {
           <>
             <div>I'm going to do:</div>
             {loading ? (
-              <h1>.......Loading</h1>
+              <h1>Loading...</h1> /* Ideally, this would be a loading spinner/image */
             ) : (
               <ul>
                 {renderThese.map((workout) => (

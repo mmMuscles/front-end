@@ -6,39 +6,39 @@ import { setupServer } from 'msw/node'
 import Profile from "./Profile";
 
 let mockResponse = {
-    goal_1: "Lift a car",
-    goal_2: "beat up my bully",
-    username: "Karl",
-    weight: "140",
-    weight_goal: "260"
+  goal_1: "Lift a car",
+  goal_2: "beat up my bully",
+  username: "Karl",
+  weight: "140",
+  weight_goal: "260"
 }
 
 const server = setupServer(
-    // Describe the requests to mock.
-    rest.get('https://psdgtyeifanapnczvbzn.supabase.co/rest/v1/profiles', (req, res, ctx) => {
-      return res(
-          ctx.json(mockResponse))
-    }),
-  )
-  
-  beforeAll(() => {
-    // Establish requests interception layer before all tests.
-    server.listen()
-  })
-  afterAll(() => {
-    // Clean up after all tests are done, preventing this
-    // interception layer from affecting irrelevant tests.
-    server.close()
-  })  
+  // Describe the requests to mock.
+  rest.get('https://psdgtyeifanapnczvbzn.supabase.co/rest/v1/profiles', (req, res, ctx) => {
+    return res(
+      ctx.json(mockResponse))
+  }),
+)
+
+beforeAll(() => {
+  // Establish requests interception layer before all tests.
+  server.listen()
+})
+afterAll(() => {
+  // Clean up after all tests are done, preventing this
+  // interception layer from affecting irrelevant tests.
+  server.close()
+})
 
 // Combined behavior & snapshot test
 it("allow user to change profile inputs", async () => {
   const { container } = render(
-        <UserProvider >
-          <WorkoutProvider>
-              <Profile />
-          </WorkoutProvider>
-        </UserProvider>
+    <UserProvider >
+      <WorkoutProvider>
+        <Profile />
+      </WorkoutProvider>
+    </UserProvider>
   );
 
   expect(container).toMatchSnapshot();

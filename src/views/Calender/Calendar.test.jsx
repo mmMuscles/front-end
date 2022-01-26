@@ -29,13 +29,16 @@ const server = setupServer(
     }
   )
 );
+
 describe("render test", () => {
   beforeAll(() => {
     server.listen();
   });
+
   afterAll(() => {
     server.close();
   });
+
   it("calendar test", async () => {
     render(
       <MemoryRouter initialEntries={["/calendar?date=2022-01-21"]}>

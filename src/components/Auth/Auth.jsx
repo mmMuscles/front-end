@@ -12,31 +12,22 @@ export default function Auth() {
   const [newUser, setNewUser] = useState(true);
 
   const handleStatus = () => {
-    setNewUser(!newUser);
+    setNewUser((prevUser) => !prevUser);
   };
 
   const handleLogOut = async () => {
     setUser({ email: "", id: "" });
     await logOutUser();
   };
-  const authForm = newUser ? (
+
+  const authForm = (
     <div className="flex">
-      <Login className="form" />{" "}
+      {newUser ? <SignUp className="form" /> : <Login className="form" />}{" "}
       <button
         className="bg-slate-700 opacity-90 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded m-15"
         onClick={handleStatus}
       >
-        Need to Sign Up?
-      </button>
-    </div>
-  ) : (
-    <div className="flex">
-      <SignUp className="form" />{" "}
-      <button
-        className="bg-slate-700 opacity-90 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded m-15"
-        onClick={handleStatus}
-      >
-        Need to Login?
+        Need to {newUser ? "Login" : "Sign Up"}?
       </button>
     </div>
   );

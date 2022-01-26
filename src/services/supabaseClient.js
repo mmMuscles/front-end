@@ -19,6 +19,7 @@ export async function signUpUser(email, password) {
   if (error) throw error;
   return user;
 }
+
 export async function getUser() {
   return supabase.auth.user();
 }
@@ -29,10 +30,10 @@ export async function logOutUser() {
   return alert("You have logged out");
 }
 
-export async function addWorkout(theme, user_id, date, workouts) {
+export async function addWorkout(theme, userId, date, workouts) {
   const request = await supabase
     .from("day")
-    .insert({ theme, user_id, date, workouts });
+    .insert({ theme, user_id: userId, date, workouts });
   return request.data;
 }
 
@@ -60,12 +61,12 @@ export const getThemeArray = async (currentDate, id) => {
   }
 };
 
-export const deleteWorkout = async (workoutId, user_id, date) => {
+export const deleteWorkout = async (workoutId, userId, date) => {
   try {
     await supabase
       .from("day")
       .delete()
-      .match({ workouts: workoutId, user_id: user_id, date: date });
+      .match({ workouts: workoutId, user_id: userId, date: date });
   } catch {
     console.log("error");
   }
