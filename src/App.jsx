@@ -9,23 +9,23 @@ import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <PrivateRoute path="/calendar">
-          <Header/>
-          <CalendarHome />
-        </PrivateRoute>
-        <PrivateRoute path="/allworkouts">
-          <Header/>
-          <AllWorkouts />
-        </PrivateRoute>
-        <PrivateRoute path="/profile">
-          <Header/>
-          <Profile />
-        </PrivateRoute>
-      </Switch>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <PrivateRoute path="/calendar">
+        <Header />
+        <CalendarHome />
+      </PrivateRoute>
+      <PrivateRoute path="/allworkouts">
+        <Header />
+        <AllWorkouts />
+      </PrivateRoute>
+      <PrivateRoute path="/profile">
+        <Header />
+        <Profile />
+      </PrivateRoute>
+    </Switch>
   );
 }
 

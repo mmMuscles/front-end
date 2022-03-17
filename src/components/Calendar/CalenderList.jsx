@@ -12,6 +12,7 @@ const themeList = [
   "Yoga",
   "Stretch",
 ];
+
 export default function CalenderList({ handleChange, todaysTheme }) {
   return (
     <select

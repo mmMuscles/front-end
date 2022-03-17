@@ -6,9 +6,9 @@ import Home from './Home';
 it('should render the home page', () => {
   const { container } = render(
     <UserProvider>
-    <MemoryRouter>
-      <Home />
-    </MemoryRouter>
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
     </UserProvider>
   );
   expect(container).toMatchSnapshot();

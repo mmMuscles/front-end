@@ -1,21 +1,9 @@
-import {render } from  '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { UserProvider } from '../../context/UserContext';
+import { render } from '@testing-library/react';
 import CalenderList from './CalenderList';
 
-
-describe('Header component test', () => {
-  
-    it('renders the top nav header', () => {
-       const { container } = render(
-            <UserProvider>
-            <MemoryRouter>
-                     <CalenderList/>
-            </MemoryRouter>
-            </UserProvider>
-        );
+describe('CalenderList', () => {
+    it('renders a dropdown of themes', () => {
+        const { container } = render(<CalenderList todaysTheme="Rest" />);
         expect(container).toMatchSnapshot();
-         
     })
-
 })

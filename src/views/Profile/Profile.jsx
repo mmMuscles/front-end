@@ -6,10 +6,10 @@ import "./Profile.css";
 export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
-  const [goal_1, setGoal1] = useState(null);
-  const [goal_2, setGoal2] = useState(null);
+  const [goal1, setGoal1] = useState(null); // [goal1, setGoal1]
+  const [goal2, setGoal2] = useState(null); // [goal2, setGoal2]
   const [weight, setWeight] = useState(null);
-  const [weight_goal, setWeightGoal] = useState(null);
+  const [weightGoal, setWeightGoal] = useState(null); // [weightGoal, setWeightGoal]
   const { user, setProfile } = useUser();
 
   useEffect(() => {
@@ -58,10 +58,10 @@ export default function Profile() {
 
       const updates = {
         username,
-        goal_1,
-        goal_2,
+        goal_1: goal1,
+        goal_2: goal2,
         weight,
-        weight_goal,
+        weight_goal: weightGoal,
         updated_at: new Date(),
       };
 
@@ -106,19 +106,19 @@ export default function Profile() {
         <section>
           <label htmlFor="goal_1">Primary Goal </label>
           <input
-            id="goal_1"
-            type="goal_1"
-            value={goal_1 || ""}
+            id="goal1"
+            type="goal1"
+            value={goal1 || ""}
             onChange={(e) => setGoal1(e.target.value)}
           />
         </section>
 
         <section>
-          <label htmlFor="goal_2">Secondary Goal </label>
+          <label htmlFor="goal2">Secondary Goal </label>
           <input
-            id="goal_2"
-            type="goal_2"
-            value={goal_2 || ""}
+            id="goal2"
+            type="goal2"
+            value={goal2 || ""}
             onChange={(e) => setGoal2(e.target.value)}
           />
         </section>
@@ -136,9 +136,9 @@ export default function Profile() {
         <section>
           <label htmlFor="weight_goal">Weight goal </label>
           <input
-            id="weight_goal"
-            type="weight_goal"
-            value={weight_goal || ""}
+            id="weightGoal"
+            type="weightGoal"
+            value={weightGoal || ""}
             onChange={(e) => setWeightGoal(e.target.value)}
           />
         </section>
@@ -147,7 +147,7 @@ export default function Profile() {
           className="hover:bg-blue-700 text-white font-bold py-1 px-4 ml-96 rounded w-24"
           disabled={loading}
         >
-          {loading ? "updating" : "Update"}
+          {loading ? "Updating" : "Update"}
         </button>
       </form>
     </main>

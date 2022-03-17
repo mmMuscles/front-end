@@ -5,16 +5,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/UserContext';
-import  {WorkoutProvider} from './context/WorkoutContext'
+import { WorkoutProvider } from './context/WorkoutContext'
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-        <WorkoutProvider>
-          <Router>
-            <App />
-          </Router>
-        </WorkoutProvider>
+      <WorkoutProvider>
+        <Router>
+          <App />
+        </Router>
+      </WorkoutProvider>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')

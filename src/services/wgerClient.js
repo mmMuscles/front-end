@@ -3,6 +3,7 @@ export const getWorkouts = async (offset) => {
     const data = await response.json()
     return data.results.map(workout => workoutMunger(workout))
 }
+
 export const getWorkoutsNoPage = async () => {
     const response = await fetch(`https://wger.de/api/v2/exerciseinfo?language=2&limit=1000`)
     const data = await response.json()

@@ -8,19 +8,19 @@ export default function PrivateRoute({ children, ...rest }) {
   const { user } = useUser();
   return (
     <Route
-    {...rest}
-    render={({ location }) =>
-      user.email ? (
-        children
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/",
-            state: { from: location }
-          }}
-        />
-      )
-    }
-  />
-);
+      {...rest}
+      render={({ location }) =>
+        user.email ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
+  );
 }
